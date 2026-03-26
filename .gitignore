@@ -1,0 +1,20 @@
+# Compiled files
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# Build folders
+build/
+bin/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+
+# VS Code
+.vscode/
+
+# Mac 
+.DS_Store
