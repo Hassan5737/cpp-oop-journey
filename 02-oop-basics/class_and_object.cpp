@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-    Class & Object - Advanced Version
+    Class & Object 
     Concepts:
     - Encapsulation
     - Data hiding
