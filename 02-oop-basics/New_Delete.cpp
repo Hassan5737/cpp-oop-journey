@@ -2,6 +2,9 @@
 #include <cstring>
 using namespace std;
 
+// ======================
+//  Class with Dynamic Memory
+// ======================
 class Student
 {
 private:
@@ -10,17 +13,14 @@ private:
     int size;
 
 public:
-
     // Constructor
     Student(const char* n, int s)
     {
         size = s;
 
-        // allocate name
         name = new char[strlen(n) + 1];
         strcpy(name, n);
 
-        // allocate grades
         grades = new int[size];
 
         for (int i = 0; i < size; i++)
@@ -34,8 +34,8 @@ public:
             grades[index] = value;
     }
 
-    // print data
-    void print()
+    // print
+    void print() const
     {
         cout << "Name: " << name << endl;
         cout << "Grades: ";
@@ -49,15 +49,63 @@ public:
     // Destructor
     ~Student()
     {
+        cout << "Destructor called for " << name << endl;
+
         delete[] name;
         delete[] grades;
-
-        cout << "Destructor called for " << name << endl;
     }
 };
 
+// ======================
+// Main
+// ======================
 int main()
 {
+    cout << "===== POINTER BASICS =====\n";
+
+    int var1 = 11;
+    int var2 = 22;
+
+    cout << "Address of var1: " << &var1 << endl;
+    cout << "Address of var2: " << &var2 << endl;
+
+    int* ptr = &var2;
+
+    cout << "Value before: " << var2 << endl;
+
+    *ptr = 5000; // modify through pointer
+
+    cout << "Value after: " << var2 << endl;
+
+
+    cout << "\n===== DYNAMIC MEMORY =====\n";
+
+    int* p = new int;
+    *p = 100;
+
+    cout << "Heap value: " << *p << endl;
+
+    delete p;
+
+
+    cout << "\n===== DYNAMIC ARRAY =====\n";
+
+    int size = 3;
+    int* arr = new int[size];
+
+    for (int i = 0; i < size; i++)
+        arr[i] = (i + 1) * 10;
+
+    for (int i = 0; i < size; i++)
+        cout << arr[i] << " ";
+
+    cout << endl;
+
+    delete[] arr;
+
+
+    cout << "\n===== CLASS WITH POINTERS =====\n";
+
     Student s1("Hassan", 3);
 
     s1.setGrade(0, 90);
