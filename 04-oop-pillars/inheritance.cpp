@@ -15,39 +15,71 @@ public:
         age = a;
     }
 
-    void setPerson(string n, int a) {
-        name = n;
-        age = a;
-    }
-
-    void printPerson() const {
+    virtual void print() const {
         cout << "Name: " << name << endl;
         cout << "Age: " << age << endl;
     }
+
+    virtual ~Person() {}
 };
 
 // ======================
-// Derived Class
+// Derived Class 1
 // ======================
 class Student : public Person {
-private:
+protected:
     int grade;
 
 public:
     Student(string n = "Unknown", int a = 0, int g = 0)
-        : Person(n, a) // calling base constructor
+        : Person(n, a)
     {
         grade = g;
     }
 
-    void setStudent(string n, int a, int g) {
-        setPerson(n, a); // reuse base function
-        grade = g;
+    void print() const override {
+        Person::print();
+        cout << "Grade: " << grade << endl;
+    }
+};
+
+// ======================
+// Derived Class 2
+// ======================
+class Teacher : public Person {
+protected:
+    double salary;
+
+public:
+    Teacher(string n = "Unknown", int a = 0, double s = 0)
+        : Person(n, a)
+    {
+        salary = s;
     }
 
-    void printStudent() const {
-        printPerson(); // reuse base function
-        cout << "Grade: " << grade << endl;
+    void print() const override {
+        Person::print();
+        cout << "Salary: " << salary << endl;
+    }
+};
+
+
+class Assistant : public Student, public Teacher {
+private:
+    int hours;
+
+public:
+    Assistant(string n, int a, int g, double s, int h)
+        : Student(n, a, g), Teacher(n, a, s)
+    {
+        hours = h;
+    }
+
+    void print() const {
+     
+        Student::print();
+        cout << "Salary: " << salary << endl;
+        cout << "Working Hours: " << hours << endl;
     }
 };
 
@@ -55,15 +87,27 @@ public:
 // MAIN
 // ======================
 int main() {
-    Student s1("Hassan", 21, 90);
 
-    s1.printStudent();
+    cout << "=== Student ===\n";
+    Student s("Hassan", 21, 90);
+    s.print();
 
-    cout << "------------" << endl;
+    cout << "\n=== Teacher ===\n";
+    Teacher t("Dr.Ali", 45, 8000);
+    t.print();
 
-    Student s2;
-    s2.setStudent("Ali", 22, 85);
-    s2.printStudent();
+    cout << "\n=== Polymorphism ===\n";
+    Person* p;
+
+    p = &s;
+    p->print(); // calls Student print
+
+    p = &t;
+    p->print(); // calls Teacher print
+
+    cout << "\n=== Assistant (Multiple Inheritance) ===\n";
+    Assistant a("Omar", 23, 85, 3000, 20);
+    a.print();
 
     return 0;
 }
