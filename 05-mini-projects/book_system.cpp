@@ -8,39 +8,37 @@ private:
     string author;
     double price;
 
-    static int bookCount; // عدد الكتب
+    static int bookCount; 
 
 public:
-    // Default Constructor
+   
     Book()
         : title("unknown"), author("unknown"), price(0.0)
     {
         bookCount++;
     }
 
-    // Parameterized Constructor
+   
     Book(string t, string a, double p)
         : title(t), author(a), price(p >= 0 ? p : 0)
     {
         bookCount++;
     }
 
-    // Copy Constructor
+    
     Book(const Book& other)
         : title(other.title), author(other.author), price(other.price)
     {
         bookCount++;
     }
 
-    // Destructor
+
     ~Book()
     {
         bookCount--;
     }
 
-    // ======================
-    // Getters
-    // ======================
+    
     string getTitle() const { return title; }
     string getAuthor() const { return author; }
     double getPrice() const { return price; }
@@ -50,18 +48,13 @@ public:
         return bookCount;
     }
 
-    // ======================
-    // Setters
-    // ======================
     void setPrice(double p)
     {
         if (p >= 0)
             price = p;
     }
 
-    // ======================
-    // Logic Functions
-    // ======================
+
     void applyDiscount(double percent)
     {
         if (percent >= 0 && percent <= 100)
@@ -73,11 +66,8 @@ public:
         return price + price * (taxPercent / 100);
     }
 
-    // ======================
-    // Operator Overloading
-    // ======================
 
-    // +
+   
     Book operator+(const Book& other) const
     {
         return Book(
@@ -87,7 +77,7 @@ public:
         );
     }
 
-    // +=
+  
     Book& operator+=(const Book& other)
     {
         title += " & " + other.title;
@@ -96,7 +86,7 @@ public:
         return *this;
     }
 
-    // ==
+
     bool operator==(const Book& other) const
     {
         return (title == other.title &&
@@ -104,13 +94,13 @@ public:
                 price == other.price);
     }
 
-    // <
+ 
     bool operator<(const Book& other) const
     {
         return price < other.price;
     }
 
-    // <<
+    
     friend ostream& operator<<(ostream& out, const Book& b)
     {
         out << "Title : " << b.title << "\n";
@@ -119,21 +109,17 @@ public:
         return out;
     }
 
-    // ======================
-    // Extra (Advanced)
-    // ======================
+
     Book* clone() const
     {
         return new Book(*this);
     }
 };
 
-// تعريف static
+
 int Book::bookCount = 0;
 
-// ======================
-// MAIN
-// ======================
+
 int main()
 {
     Book b1("A", "X", 100);
