@@ -8,86 +8,132 @@ private:
     string author;
     double price;
 
+    static int bookCount; // عدد الكتب
+
 public:
+    // Default Constructor
     Book()
+        : title("unknown"), author("unknown"), price(0.0)
     {
-        title = "unknown";
-        author = "unknown";
-        price = 0;
+        bookCount++;
     }
 
-    Book(string s, string s2, double p)
+    // Parameterized Constructor
+    Book(string t, string a, double p)
+        : title(t), author(a), price(p >= 0 ? p : 0)
     {
-        title = s;
-        author = s2;
-        price = p;
+        bookCount++;
     }
 
     // Copy Constructor
     Book(const Book& other)
+        : title(other.title), author(other.author), price(other.price)
     {
-        title = other.title;
-        author = other.author;
-        price = other.price;
+        bookCount++;
     }
 
+    // Destructor
     ~Book()
     {
-        cout << "Book destroyed: " << title << endl;
+        bookCount--;
     }
 
+    // ======================
     // Getters
+    // ======================
     string getTitle() const { return title; }
     string getAuthor() const { return author; }
     double getPrice() const { return price; }
 
-    // Setter
+    static int getBookCount()
+    {
+        return bookCount;
+    }
+
+    // ======================
+    // Setters
+    // ======================
     void setPrice(double p)
     {
         if (p >= 0)
             price = p;
     }
 
+    // ======================
+    // Logic Functions
+    // ======================
     void applyDiscount(double percent)
     {
-        price -= price * (percent / 100);
+        if (percent >= 0 && percent <= 100)
+            price -= price * (percent / 100);
     }
 
-    void print() const
+    double getPriceWithTax(double taxPercent) const
     {
-        cout << "Title: " << title << endl;
-        cout << "Author: " << author << endl;
-        cout << "Price: " << price << endl;
+        return price + price * (taxPercent / 100);
     }
 
-    // Operator +
-    Book operator+(const Book& other)
+    // ======================
+    // Operator Overloading
+    // ======================
+
+    // +
+    Book operator+(const Book& other) const
     {
-        Book result;
-        result.title = this->title + " & " + other.title;
-        result.author = this->author + " & " + other.author;
-        result.price = this->price + other.price;
-        return result;
+        return Book(
+            title + " & " + other.title,
+            author + " & " + other.author,
+            price + other.price
+        );
     }
 
-    // Operator ==
-    friend bool operator==(const Book& ob1, const Book& ob2)
+    // +=
+    Book& operator+=(const Book& other)
     {
-        return (ob1.title == ob2.title &&
-                ob1.author == ob2.author &&
-                ob1.price == ob2.price);
+        title += " & " + other.title;
+        author += " & " + other.author;
+        price += other.price;
+        return *this;
     }
 
-    // Operator <<
+    // ==
+    bool operator==(const Book& other) const
+    {
+        return (title == other.title &&
+                author == other.author &&
+                price == other.price);
+    }
+
+    // <
+    bool operator<(const Book& other) const
+    {
+        return price < other.price;
+    }
+
+    // <<
     friend ostream& operator<<(ostream& out, const Book& b)
     {
-        out << "Title: " << b.title << "\n";
+        out << "Title : " << b.title << "\n";
         out << "Author: " << b.author << "\n";
-        out << "Price: " << b.price << "\n";
+        out << "Price : " << b.price << "\n";
         return out;
+    }
+
+    // ======================
+    // Extra (Advanced)
+    // ======================
+    Book* clone() const
+    {
+        return new Book(*this);
     }
 };
 
+// تعريف static
+int Book::bookCount = 0;
+
+// ======================
+// MAIN
+// ======================
 int main()
 {
     Book b1("A", "X", 100);
@@ -104,6 +150,21 @@ int main()
 
     b3.applyDiscount(10);
     cout << "After discount:\n" << b3;
+
+    cout << "\nBooks count: " << Book::getBookCount() << endl;
+
+    // +=
+    b1 += b2;
+    cout << "\nAfter +=:\n" << b1;
+
+    // Tax
+    cout << "\nPrice with tax: " << b1.getPriceWithTax(14) << endl;
+
+    // Clone
+    Book* copy = b1.clone();
+    cout << "\nCloned Book:\n" << *copy;
+
+    delete copy;
 
     return 0;
 }
