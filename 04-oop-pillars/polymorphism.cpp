@@ -1,9 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// ======================
-// Base Class
-// ======================
+// Abstract Base Class
 class Person {
 protected:
     string name;
@@ -16,15 +14,25 @@ public:
         age = a;
     }
 
-  
+    // Virtual function
     virtual void print() const
     {
         cout << "Name: " << name << endl;
         cout << "Age: " << age << endl;
     }
 
-    virtual ~Person() {}
+    // Pure Virtual Function (Abstraction)
+    virtual void work() const = 0;
+
+    // Virtual Destructor
+    virtual ~Person()
+    {
+        cout << "Person destroyed\n";
+    }
 };
+
+
+// Derived Class 1
 class Student : public Person {
 private:
     int grade;
@@ -41,11 +49,20 @@ public:
         Person::print();
         cout << "Grade: " << grade << endl;
     }
+
+    void work() const override
+    {
+        cout << name << " is studying..." << endl;
+    }
+
+    ~Student()
+    {
+        cout << "Student destroyed\n";
+    }
 };
 
-// ======================
+
 // Derived Class 2
-// ======================
 class Teacher : public Person {
 private:
     double salary;
@@ -62,47 +79,54 @@ public:
         Person::print();
         cout << "Salary: " << salary << endl;
     }
+
+    void work() const override
+    {
+        cout << name << " is teaching..." << endl;
+    }
+
+    ~Teacher()
+    {
+        cout << "Teacher destroyed\n";
+    }
 };
 
-// ======================
-// MAIN
-// ======================
+
 int main()
 {
-    Student s("Hassan", 21, 90);
-    Teacher t("Ali", 45, 8000);
+    // Polymorphism with dynamic allocation
+    Person* p1 = new Student("Hassan", 21, 90);
+    Person* p2 = new Teacher("Ali", 45, 8000);
 
-    cout << "=== Direct Call ===\n";
-    s.print();
-    cout << "------------\n";
-    t.print();
+    cout << "=== Polymorphism ===\n";
 
-    cout << "\n=== Polymorphism ===\n";
-
-    Person* p;
-
-    p = &s;
-    p->print(); // calls Student print
+    p1->print();
+    p1->work();
 
     cout << "------------\n";
 
-    p = &t;
-    p->print(); // calls Teacher print
+    p2->print();
+    p2->work();
 
     cout << "------------\n";
 
     // Array of base pointers
     Person* people[2];
-    people[0] = &s;
-    people[1] = &t;
+    people[0] = p1;
+    people[1] = p2;
 
-    cout << "\n=== Loop (Polymorphism) ===\n";
+    cout << "\n=== Loop ===\n";
 
     for (int i = 0; i < 2; i++)
     {
         people[i]->print();
+        people[i]->work();
         cout << "------------\n";
     }
+
+    // Clean up
+    delete p1;
+    delete p2;
 
     return 0;
 }
