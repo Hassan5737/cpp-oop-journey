@@ -32,7 +32,7 @@ public:
 };
 
 
-// Derived Class 1
+
 class Student : public Person {
 private:
     int grade;
@@ -62,7 +62,7 @@ public:
 };
 
 
-// Derived Class 2
+
 class Teacher : public Person {
 private:
     double salary;
