@@ -51,6 +51,18 @@ public:
         }
     }
 
+student(const student &other) : person(other)
+{
+    size = other.size;
+
+    grades = new double[size];
+
+    for (int i = 0; i < size; i++)
+    {
+        grades[i] = other.grades[i];
+    }
+}
+
     // Destructor
     ~student()
     {
