@@ -1,106 +1,199 @@
 #include <iostream>
 #include <string>
+#include <exception>
 using namespace std;
 
 // =========================
-// Function: Division
+// Custom Exception Base Class
+// =========================
+class AppException : public exception
+{
+protected:
+    string message;
+
+public:
+    AppException(const string& msg) : message(msg) {}
+
+    virtual const char* what() const noexcept override
+    {
+        return message.c_str();
+    }
+};
+
+// =========================
+// Derived Exceptions
+// =========================
+class DivisionByZeroException : public AppException
+{
+public:
+    DivisionByZeroException() : AppException("Division by zero is not allowed") {}
+};
+
+class InvalidAgeException : public AppException
+{
+public:
+    InvalidAgeException() : AppException("Age cannot be negative") {}
+};
+
+class UnderAgeException : public AppException
+{
+public:
+    UnderAgeException() : AppException("User is under age") {}
+};
+
+class OutOfRangeException : public AppException
+{
+public:
+    OutOfRangeException() : AppException("Index out of range") {}
+};
+
+class InsufficientBalanceException : public AppException
+{
+public:
+    InsufficientBalanceException() : AppException("Insufficient balance") {}
+};
+
+class NegativeAmountException : public AppException
+{
+public:
+    NegativeAmountException() : AppException("Negative amount is not allowed") {}
+};
+
+// =========================
+// Division Function
 // =========================
 double divide(double a, double b)
 {
     if (b == 0)
-        throw "Error: Division by zero!";
+        throw DivisionByZeroException();
 
     return a / b;
 }
 
 // =========================
-// Function: Age Check
+// Age Check
 // =========================
 void checkAge(int age)
 {
     if (age < 0)
-        throw invalid_argument("Age cannot be negative!");
+        throw InvalidAgeException();
 
     if (age < 18)
-        throw "You are too young!";
+        throw UnderAgeException();
 
-    cout << "Access granted!" << endl;
+    cout << "Access granted" << endl;
 }
 
 // =========================
-// Function: Array Access
+// Array Access
 // =========================
 int getElement(int arr[], int size, int index)
 {
     if (index < 0 || index >= size)
-        throw out_of_range("Index out of range!");
+        throw OutOfRangeException();
 
     return arr[index];
 }
 
 // =========================
-// MAIN
+// Bank System
 // =========================
+class BankAccount
+{
+private:
+    double balance;
+
+public:
+    BankAccount(double b) : balance(b) {}
+
+    void withdraw(double amount)
+    {
+        if (amount < 0)
+            throw NegativeAmountException();
+
+        if (amount > balance)
+            throw InsufficientBalanceException();
+
+        balance -= amount;
+    }
+
+    double getBalance() const
+    {
+        return balance;
+    }
+};
+
+
 int main()
 {
-    // =========================
-    // Example 1: Division
-    // =========================
+    // Division
     try
     {
-        cout << "Division result: " << divide(10, 0) << endl;
+        cout << divide(10, 0) << endl;
     }
-    catch (const char* msg)
+    catch (const DivisionByZeroException& e)
     {
-        cout << msg << endl;
+        cout << e.what() << endl;
     }
 
-    cout << "----------------------" << endl;
+    cout << "------------------" << endl;
 
-    // =========================
-    // Example 2: Age Check
-    // =========================
+    // Age Check
     try
     {
         checkAge(15);
     }
-    catch (const invalid_argument& e)
+    catch (const AppException& e)
     {
-        cout << "Invalid Argument: " << e.what() << endl;
-    }
-    catch (const char* msg)
-    {
-        cout << msg << endl;
+        cout << e.what() << endl;
     }
 
-    cout << "----------------------" << endl;
+    cout << "------------------" << endl;
 
-    // =========================
-    // Example 3: Array Access
-    // =========================
+    // Array Access
     int arr[3] = {1, 2, 3};
 
     try
     {
         cout << getElement(arr, 3, 5) << endl;
     }
-    catch (const out_of_range& e)
+    catch (const OutOfRangeException& e)
     {
-        cout << "Out of Range: " << e.what() << endl;
+        cout << e.what() << endl;
     }
 
-    cout << "----------------------" << endl;
+    cout << "------------------" << endl;
 
-    // =========================
-    // Example 4: Catch All
-    // =========================
+    // Bank System
+    BankAccount acc(100);
+
     try
     {
-        throw 404; 
+        acc.withdraw(150);
+    }
+    catch (const NegativeAmountException& e)
+    {
+        cout << e.what() << endl;
+    }
+    catch (const InsufficientBalanceException& e)
+    {
+        cout << e.what() << endl;
+    }
+
+    cout << "------------------" << endl;
+
+    // Multiple Catch Types
+    try
+    {
+        throw 404;
+    }
+    catch (int e)
+    {
+        cout << "Integer exception: " << e << endl;
     }
     catch (...)
     {
-        cout << "Unknown error occurred!" << endl;
+        cout << "Unknown exception" << endl;
     }
 
     return 0;
