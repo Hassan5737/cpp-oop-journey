@@ -137,9 +137,7 @@ void readBinary(const string& filename)
     inFile.close();
 }
 
-// =========================
-// MAIN
-// =========================
+
 int main()
 {
     string textFile = "data.txt";
