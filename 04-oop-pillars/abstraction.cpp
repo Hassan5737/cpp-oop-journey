@@ -1,66 +1,112 @@
 #include <iostream>
 #include <vector>
+#include <memory>
+#include <stdexcept>
 using namespace std;
 
-// Abstract Class
+// ================= Exception =================
+class PaymentException : public exception
+{
+private:
+    string message;
+
+public:
+    PaymentException(const string& msg) : message(msg) {}
+
+    const char* what() const noexcept override
+    {
+        return message.c_str();
+    }
+};
+
+// ================= Abstract Class =================
 class Payment
 {
 protected:
     double amount;
 
 public:
-    Payment(double amt) : amount(amt) {}
+    Payment(double amt)
+    {
+        if (amt <= 0)
+            throw PaymentException("Invalid payment amount!");
+
+        amount = amt;
+    }
 
     virtual void pay() const = 0;
     virtual void printReceipt() const = 0;
+    virtual string getType() const = 0;
 
     virtual ~Payment() {}
 };
 
-// Credit Card Payment
+// ================= Credit Card =================
 class CreditCard : public Payment
 {
 private:
     string cardNumber;
 
 public:
-    CreditCard(double amt, string cardNum)
-        : Payment(amt), cardNumber(cardNum) {}
+    CreditCard(double amt, const string& cardNum)
+        : Payment(amt)
+    {
+        if (cardNum.length() < 4)
+            throw PaymentException("Invalid card number!");
+
+        cardNumber = cardNum;
+    }
 
     void pay() const override
     {
-        cout << "Processing credit card payment...\n";
+        cout << "[CreditCard] Payment processing...\n";
     }
 
     void printReceipt() const override
     {
-        cout << "Paid $" << amount << " using Credit Card: "
-             << "**** **** **** " << cardNumber.substr(cardNumber.length() - 4) << endl;
+        cout << "Paid $" << amount << " using Credit Card ****"
+             << cardNumber.substr(cardNumber.length() - 4) << endl;
+    }
+
+    string getType() const override
+    {
+        return "CreditCard";
     }
 };
 
-// PayPal Payment
+// ================= PayPal =================
 class PayPal : public Payment
 {
 private:
     string email;
 
 public:
-    PayPal(double amt, string mail)
-        : Payment(amt), email(mail) {}
+    PayPal(double amt, const string& mail)
+        : Payment(amt)
+    {
+        if (mail.find('@') == string::npos)
+            throw PaymentException("Invalid email!");
+
+        email = mail;
+    }
 
     void pay() const override
     {
-        cout << "Processing PayPal payment...\n";
+        cout << "[PayPal] Payment processing...\n";
     }
 
     void printReceipt() const override
     {
-        cout << "Paid $" << amount << " using PayPal account: " << email << endl;
+        cout << "Paid $" << amount << " using PayPal: " << email << endl;
+    }
+
+    string getType() const override
+    {
+        return "PayPal";
     }
 };
 
-// Cash Payment
+// ================= Cash =================
 class Cash : public Payment
 {
 public:
@@ -68,56 +114,131 @@ public:
 
     void pay() const override
     {
-        cout << "Processing cash payment...\n";
+        cout << "[Cash] Payment processing...\n";
     }
 
     void printReceipt() const override
     {
-        cout << "Paid $" << amount << " in cash.\n";
+        cout << "Paid $" << amount << " in cash\n";
+    }
+
+    string getType() const override
+    {
+        return "Cash";
     }
 };
 
-// Manager class
+// ================= Factory =================
+class PaymentFactory
+{
+public:
+    static unique_ptr<Payment> createPayment(int choice)
+    {
+        double amount;
+        cout << "Enter amount: ";
+        cin >> amount;
+
+        if (choice == 1)
+        {
+            string card;
+            cout << "Enter card number: ";
+            cin >> card;
+            return make_unique<CreditCard>(amount, card);
+        }
+        else if (choice == 2)
+        {
+            string email;
+            cout << "Enter email: ";
+            cin >> email;
+            return make_unique<PayPal>(amount, email);
+        }
+        else if (choice == 3)
+        {
+            return make_unique<Cash>(amount);
+        }
+
+        throw PaymentException("Invalid payment type!");
+    }
+};
+
+// ================= Logger =================
+class Logger
+{
+public:
+    static void log(const string& msg)
+    {
+        cout << "[LOG]: " << msg << endl;
+    }
+};
+
+// ================= Transaction =================
+class Transaction
+{
+private:
+    unique_ptr<Payment> payment;
+
+public:
+    Transaction(unique_ptr<Payment> p)
+        : payment(move(p)) {}
+
+    void execute()
+    {
+        try
+        {
+            payment->pay();
+            payment->printReceipt();
+            Logger::log("Transaction success: " + payment->getType());
+        }
+        catch (const exception& e)
+        {
+            Logger::log(string("Transaction failed: ") + e.what());
+        }
+    }
+};
+
+// ================= Manager =================
 class PaymentProcessor
 {
 private:
-    vector<Payment*> payments;
+    vector<unique_ptr<Transaction>> transactions;
 
 public:
-    void addPayment(Payment* p)
+    void addTransaction(unique_ptr<Transaction> t)
     {
-        payments.push_back(p);
+        transactions.push_back(move(t));
     }
 
     void processAll()
     {
-        for (const auto& p : payments)
+        for (auto& t : transactions)
         {
-            p->pay();
-            p->printReceipt();
-            cout << "----------------------\n";
-        }
-    }
-
-    ~PaymentProcessor()
-    {
-        for (auto p : payments)
-        {
-            delete p;
+            t->execute();
+            cout << "------------------\n";
         }
     }
 };
 
-// Main
+// ================= Main =================
 int main()
 {
     PaymentProcessor processor;
 
-    processor.addPayment(new CreditCard(150.75, "1234567812345678"));
-    processor.addPayment(new PayPal(200.50, "user@example.com"));
-    processor.addPayment(new Cash(50.00));
+    int choice;
+    cout << "1. Credit Card\n2. PayPal\n3. Cash\nChoose: ";
+    cin >> choice;
 
-    processor.processAll();
+    try
+    {
+        auto payment = PaymentFactory::createPayment(choice);
+        auto transaction = make_unique<Transaction>(move(payment));
+
+        processor.addTransaction(move(transaction));
+        processor.processAll();
+    }
+    catch (const exception& e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
 
     return 0;
 }
