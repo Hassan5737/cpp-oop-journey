@@ -19,7 +19,7 @@ public:
     }
 };
 
-// ================= Abstract Class =================
+
 class Payment
 {
 protected:
@@ -41,7 +41,7 @@ public:
     virtual ~Payment() {}
 };
 
-// ================= Credit Card =================
+
 class CreditCard : public Payment
 {
 private:
@@ -74,7 +74,7 @@ public:
     }
 };
 
-// ================= PayPal =================
+
 class PayPal : public Payment
 {
 private:
@@ -106,7 +106,7 @@ public:
     }
 };
 
-// ================= Cash =================
+
 class Cash : public Payment
 {
 public:
@@ -128,7 +128,7 @@ public:
     }
 };
 
-// ================= Factory =================
+
 class PaymentFactory
 {
 public:
@@ -161,7 +161,7 @@ public:
     }
 };
 
-// ================= Logger =================
+
 class Logger
 {
 public:
@@ -171,7 +171,7 @@ public:
     }
 };
 
-// ================= Transaction =================
+
 class Transaction
 {
 private:
@@ -196,7 +196,7 @@ public:
     }
 };
 
-// ================= Manager =================
+
 class PaymentProcessor
 {
 private:
@@ -218,7 +218,7 @@ public:
     }
 };
 
-// ================= Main =================
+
 int main()
 {
     PaymentProcessor processor;
