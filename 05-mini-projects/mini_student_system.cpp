@@ -1,54 +1,93 @@
 #include <iostream>
 using namespace std;
 
-class Stu
+class Student
 {
-    private:
-        string name;
-        int mark;
-    public:
-        Stu(string n, int m)
-        {
-            name = n;
-            mark = m;
-        }
-        Stu()
-        {
-            cout << "Enter the name: " << endl;
-            cin >> name;
-            cout << "Enter the mark: " << endl;
-            cin >> mark;
-        }
+private:
+    string name;
+    int mark;
 
-        friend int sum(Stu ob1, Stu ob2, Stu ob3);
+public:
+    // Parameterized Constructor
+    Student(string n, int m)
+    {
+        name = n;
+        mark = m;
+    }
 
-        void checkMarks(Stu ob1, Stu ob2, Stu ob3)
-        {
-            if(ob1.mark > ob2.mark && ob1.mark > ob3.mark)
-                cout << ob1.name << endl;
+    // Default Constructor
+    Student()
+    {
+        cout << "Enter student name: ";
+        cin >> name;
 
-            else if(ob2.mark > ob1.mark && ob2.mark > ob3.mark)
-               cout << ob2.name << endl;
+        cout << "Enter student mark: ";
+        cin >> mark;
+    }
 
-            else if(ob3.mark > ob1.mark && ob3.mark > ob2.mark)
-             cout << ob3.name << endl;
+    // Display Student Data
+    void display() const
+    {
+        cout << "Name : " << name << endl;
+        cout << "Mark : " << mark << endl;
+    }
 
-            else 
-                cout << "all the marks are equal" << endl;
-        }
+    // Compare Marks
+    static void checkHighestMark(const Student& s1,
+                                 const Student& s2,
+                                 const Student& s3)
+    {
+        if (s1.mark > s2.mark && s1.mark > s3.mark)
+            cout << s1.name << " has the highest mark.\n";
 
+        else if (s2.mark > s1.mark && s2.mark > s3.mark)
+            cout << s2.name << " has the highest mark.\n";
+
+        else if (s3.mark > s1.mark && s3.mark > s2.mark)
+            cout << s3.name << " has the highest mark.\n";
+
+        else
+            cout << "There is a tie between students.\n";
+    }
+
+    // Friend Function
+    friend int sumMarks(const Student& s1,
+                        const Student& s2,
+                        const Student& s3);
 };
 
-int sum(Stu ob1, Stu ob2, Stu ob3)
+// Friend Function Definition
+int sumMarks(const Student& s1,
+             const Student& s2,
+             const Student& s3)
 {
-    return ob1.mark + ob2.mark + ob3.mark;
+    return s1.mark + s2.mark + s3.mark;
 }
-
 
 int main()
 {
-    Stu ob1("Ahmed" , 50);
-    Stu ob2("Ali" , 60);
-    Stu ob3("nour" , 100);
+    Student s1("Ahmed", 50);
+    Student s2("Ali", 60);
+    Student s3("Nour", 100);
 
+    cout << "===== Students Data =====\n\n";
+
+    s1.display();
+    cout << endl;
+
+    s2.display();
+    cout << endl;
+
+    s3.display();
+    cout << endl;
+
+    cout << "=========================\n\n";
+
+    cout << "Total Marks = "
+         << sumMarks(s1, s2, s3)
+         << endl << endl;
+
+    Student::checkHighestMark(s1, s2, s3);
+
+    return 0;
 }
