@@ -1,16 +1,50 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-// base class
-class Father
+// ===============================
+// Base Class (Parent)
+// ===============================
+class Animal
 {
-    Father()
+protected:
+    string name;
+
+public:
+    Animal(string n)
     {
-        cout << " hi i'm first constroctor" << endl:
+        name = n;
     }
-}
+
+    void eat()
+    {
+        cout << name << " is eating 🍖" << endl;
+    }
+};
+
+// ===============================
+// Derived Class (Child)
+// Single Inheritance
+// Dog inherits from Animal
+// ===============================
+class Dog : public Animal
+{
+public:
+    Dog(string n) : Animal(n)
+    {
+    }
+
+    void bark()
+    {
+        cout << name << " says: Woof Woof! 🐶" << endl;
+    }
+};
 
 int main()
 {
+    Dog dog1("Max");
+
+    dog1.eat();   // inherited from Animal
+    dog1.bark();  // from Dog
+
     return 0;
 }
