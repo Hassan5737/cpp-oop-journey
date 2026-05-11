@@ -27,7 +27,7 @@ public:
 
     void eat()
     {
-        cout << name << " is eating 🍖" << endl;
+        cout << name << " is eating" << endl;
     }
 };
 
@@ -53,7 +53,7 @@ public:
 
     void bark()
     {
-        cout << name << " says: Woof Woof! 🐶" << endl;
+        cout << name << " says: Woof Woof" << endl;
     }
 };
 
