@@ -1,18 +1,28 @@
 #include <iostream>
 using namespace std;
 
-// ===============================
+// =====================================
 // Base Class (Parent)
-// ===============================
+// =====================================
 class Animal
 {
 protected:
     string name;
 
 public:
+
+    // Default Constructor
+    Animal()
+    {
+        name = "Unknown";
+        cout << "Animal Default Constructor Called" << endl;
+    }
+
+    // Parameterized Constructor
     Animal(string n)
     {
         name = n;
+        cout << "Animal Parameterized Constructor Called" << endl;
     }
 
     void eat()
@@ -21,16 +31,24 @@ public:
     }
 };
 
-// ===============================
+// =====================================
 // Derived Class (Child)
 // Single Inheritance
-// Dog inherits from Animal
-// ===============================
+// =====================================
 class Dog : public Animal
 {
 public:
+
+    // Default Constructor
+    Dog() : Animal()
+    {
+        cout << "Dog Default Constructor Called" << endl;
+    }
+
+    // Parameterized Constructor
     Dog(string n) : Animal(n)
     {
+        cout << "Dog Parameterized Constructor Called" << endl;
     }
 
     void bark()
@@ -41,10 +59,21 @@ public:
 
 int main()
 {
-    Dog dog1("Max");
+    cout << "===== Default Object =====" << endl;
 
-    dog1.eat();   // inherited from Animal
-    dog1.bark();  // from Dog
+    Dog dog1;
+
+    dog1.eat();
+    dog1.bark();
+
+    cout << endl;
+
+    cout << "===== Parameterized Object =====" << endl;
+
+    Dog dog2("Max");
+
+    dog2.eat();
+    dog2.bark();
 
     return 0;
 }
