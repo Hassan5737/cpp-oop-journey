@@ -33,7 +33,7 @@ public:
 
 // =====================================
 // Derived Class (Child)
-// Single Inheritance
+// Public Inheritance
 // =====================================
 class Dog : public Animal
 {
@@ -63,7 +63,7 @@ int main()
 
     Dog dog1;
 
-    dog1.eat();
+    dog1.eat();   // inherited from Animal
     dog1.bark();
 
     cout << endl;
@@ -72,7 +72,7 @@ int main()
 
     Dog dog2("Max");
 
-    dog2.eat();
+    dog2.eat();   // inherited from Animal
     dog2.bark();
 
     return 0;
