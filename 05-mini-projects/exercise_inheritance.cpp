@@ -11,14 +11,12 @@ protected:
 
 public:
 
-    // Default Constructor
     Animal()
     {
         name = "Unknown";
         cout << "Animal Default Constructor Called" << endl;
     }
 
-    // Parameterized Constructor
     Animal(string n)
     {
         name = n;
@@ -41,14 +39,12 @@ protected:
 
 public:
 
-    // Default Constructor
     Pet()
     {
         age = 0;
         cout << "Pet Default Constructor Called" << endl;
     }
 
-    // Parameterized Constructor
     Pet(int a)
     {
         age = a;
@@ -69,13 +65,11 @@ class Dog : public Animal, public Pet
 {
 public:
 
-    // Default Constructor
     Dog() : Animal(), Pet()
     {
         cout << "Dog Default Constructor Called" << endl;
     }
 
-    // Parameterized Constructor
     Dog(string n, int a) : Animal(n), Pet(a)
     {
         cout << "Dog Parameterized Constructor Called" << endl;
@@ -88,13 +82,91 @@ public:
 };
 
 // =====================================
+// Example 2
+// =====================================
+
+// Base Class 1
+class Engine
+{
+public:
+
+    void startEngine()
+    {
+        cout << "Engine Started" << endl;
+    }
+};
+
+// Base Class 2
+class MusicSystem
+{
+public:
+
+    void playMusic()
+    {
+        cout << "Music is Playing" << endl;
+    }
+};
+
+// Derived Class
+class Car : public Engine, public MusicSystem
+{
+public:
+
+    void drive()
+    {
+        cout << "Car is Driving" << endl;
+    }
+};
+
+// =====================================
+// Example 3
+// =====================================
+
+// Base Class 1
+class Father
+{
+public:
+
+    void fatherSkill()
+    {
+        cout << "Father knows Fishing" << endl;
+    }
+};
+
+// Base Class 2
+class Mother
+{
+public:
+
+    void motherSkill()
+    {
+        cout << "Mother knows Cooking" << endl;
+    }
+};
+
+// Derived Class
+class Child : public Father, public Mother
+{
+public:
+
+    void childSkill()
+    {
+        cout << "Child knows Programming" << endl;
+    }
+};
+
+// =====================================
 // Main Function
 // =====================================
 int main()
 {
-    cout << "===== Default Object =====" << endl;
+    // =====================================
+    // Example 1
+    // =====================================
 
-    Dog dog1;
+    cout << "========== Dog Example ==========\n";
+
+    Dog dog1("Max", 5);
 
     dog1.eat();
     dog1.showAge();
@@ -102,13 +174,31 @@ int main()
 
     cout << endl;
 
-    cout << "===== Parameterized Object =====" << endl;
+    // =====================================
+    // Example 2
+    // =====================================
 
-    Dog dog2("Max", 5);
+    cout << "========== Car Example ==========\n";
 
-    dog2.eat();
-    dog2.showAge();
-    dog2.bark();
+    Car car1;
+
+    car1.startEngine();
+    car1.playMusic();
+    car1.drive();
+
+    cout << endl;
+
+    // =====================================
+    // Example 3
+    // =====================================
+
+    cout << "========== Child Example ==========\n";
+
+    Child c1;
+
+    c1.fatherSkill();
+    c1.motherSkill();
+    c1.childSkill();
 
     return 0;
 }
