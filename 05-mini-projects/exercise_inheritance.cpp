@@ -2,8 +2,11 @@
 using namespace std;
 
 // =====================================
-// Base Class 1
+// Example 1
+// Multiple Inheritance with protected
 // =====================================
+
+// Base Class 1
 class Animal
 {
 protected:
@@ -29,9 +32,7 @@ public:
     }
 };
 
-// =====================================
 // Base Class 2
-// =====================================
 class Pet
 {
 protected:
@@ -57,10 +58,7 @@ public:
     }
 };
 
-// =====================================
 // Derived Class
-// Multiple Inheritance
-// =====================================
 class Dog : public Animal, public Pet
 {
 public:
@@ -79,6 +77,12 @@ public:
     {
         cout << name << " says: Woof Woof" << endl;
     }
+
+    void dogInfo()
+    {
+        cout << "Dog Name: " << name << endl;
+        cout << "Dog Age: " << age << endl;
+    }
 };
 
 // =====================================
@@ -88,7 +92,20 @@ public:
 // Base Class 1
 class Engine
 {
+protected:
+    int horsePower;
+
 public:
+
+    Engine()
+    {
+        horsePower = 100;
+    }
+
+    Engine(int hp)
+    {
+        horsePower = hp;
+    }
 
     void startEngine()
     {
@@ -99,7 +116,20 @@ public:
 // Base Class 2
 class MusicSystem
 {
+protected:
+    string musicBrand;
+
 public:
+
+    MusicSystem()
+    {
+        musicBrand = "Unknown";
+    }
+
+    MusicSystem(string brand)
+    {
+        musicBrand = brand;
+    }
 
     void playMusic()
     {
@@ -112,9 +142,24 @@ class Car : public Engine, public MusicSystem
 {
 public:
 
+    Car() : Engine(), MusicSystem()
+    {
+    }
+
+    Car(int hp, string brand)
+        : Engine(hp), MusicSystem(brand)
+    {
+    }
+
     void drive()
     {
         cout << "Car is Driving" << endl;
+    }
+
+    void showCarInfo()
+    {
+        cout << "Horse Power: " << horsePower << endl;
+        cout << "Music System Brand: " << musicBrand << endl;
     }
 };
 
@@ -125,39 +170,71 @@ public:
 // Base Class 1
 class Father
 {
+protected:
+    string fatherTalent;
+
 public:
+
+    Father()
+    {
+        fatherTalent = "Fishing";
+    }
 
     void fatherSkill()
     {
-        cout << "Father knows Fishing" << endl;
+        cout << "Father knows " << fatherTalent << endl;
     }
 };
 
 // Base Class 2
 class Mother
 {
+protected:
+    string motherTalent;
+
 public:
+
+    Mother()
+    {
+        motherTalent = "Cooking";
+    }
 
     void motherSkill()
     {
-        cout << "Mother knows Cooking" << endl;
+        cout << "Mother knows " << motherTalent << endl;
     }
 };
 
 // Derived Class
 class Child : public Father, public Mother
 {
+protected:
+    string childTalent;
+
 public:
+
+    Child()
+    {
+        childTalent = "Programming";
+    }
 
     void childSkill()
     {
-        cout << "Child knows Programming" << endl;
+        cout << "Child knows " << childTalent << endl;
+    }
+
+    void showAllTalents()
+    {
+        cout << "Father Talent: " << fatherTalent << endl;
+        cout << "Mother Talent: " << motherTalent << endl;
+        cout << "Child Talent: " << childTalent << endl;
     }
 };
 
 // =====================================
 // Main Function
 // =====================================
+
 int main()
 {
     // =====================================
@@ -171,6 +248,7 @@ int main()
     dog1.eat();
     dog1.showAge();
     dog1.bark();
+    dog1.dogInfo();
 
     cout << endl;
 
@@ -180,11 +258,12 @@ int main()
 
     cout << "========== Car Example ==========\n";
 
-    Car car1;
+    Car car1(450, "Sony");
 
     car1.startEngine();
     car1.playMusic();
     car1.drive();
+    car1.showCarInfo();
 
     cout << endl;
 
@@ -199,6 +278,7 @@ int main()
     c1.fatherSkill();
     c1.motherSkill();
     c1.childSkill();
+    c1.showAllTalents();
 
     return 0;
 }
