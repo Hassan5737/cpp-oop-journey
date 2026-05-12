@@ -2,7 +2,7 @@
 using namespace std;
 
 // =====================================
-// Base Class (Parent)
+// Base Class 1
 // =====================================
 class Animal
 {
@@ -32,21 +32,51 @@ public:
 };
 
 // =====================================
-// Derived Class (Child)
-// Public Inheritance
+// Base Class 2
 // =====================================
-class Dog : public Animal
+class Pet
+{
+protected:
+    int age;
+
+public:
+
+    // Default Constructor
+    Pet()
+    {
+        age = 0;
+        cout << "Pet Default Constructor Called" << endl;
+    }
+
+    // Parameterized Constructor
+    Pet(int a)
+    {
+        age = a;
+        cout << "Pet Parameterized Constructor Called" << endl;
+    }
+
+    void showAge()
+    {
+        cout << "Age: " << age << endl;
+    }
+};
+
+// =====================================
+// Derived Class
+// Multiple Inheritance
+// =====================================
+class Dog : public Animal, public Pet
 {
 public:
 
     // Default Constructor
-    Dog() : Animal()
+    Dog() : Animal(), Pet()
     {
         cout << "Dog Default Constructor Called" << endl;
     }
 
     // Parameterized Constructor
-    Dog(string n) : Animal(n)
+    Dog(string n, int a) : Animal(n), Pet(a)
     {
         cout << "Dog Parameterized Constructor Called" << endl;
     }
@@ -57,22 +87,27 @@ public:
     }
 };
 
+// =====================================
+// Main Function
+// =====================================
 int main()
 {
     cout << "===== Default Object =====" << endl;
 
     Dog dog1;
 
-    dog1.eat();   // inherited from Animal
+    dog1.eat();
+    dog1.showAge();
     dog1.bark();
 
     cout << endl;
 
     cout << "===== Parameterized Object =====" << endl;
 
-    Dog dog2("Max");
+    Dog dog2("Max", 5);
 
-    dog2.eat();   // inherited from Animal
+    dog2.eat();
+    dog2.showAge();
     dog2.bark();
 
     return 0;
