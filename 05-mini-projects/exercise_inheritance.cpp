@@ -27,3 +27,17 @@ public:
         cout << "Dog says: Woof Woof" << endl;
     }
 };
+
+// =====================================
+// Another Derived Class
+// =====================================
+class Cat : public Animal
+{
+public:
+
+    // Override Function
+    void makeSound() override
+    {
+        cout << "Cat says: Meow Meow" << endl;
+    }
+};
