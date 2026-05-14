@@ -63,3 +63,44 @@ public:
         cout << name << " is barking" << endl;
     }
 };
+
+// =====================================================
+// 2) MULTIPLE INHERITANCE
+// =====================================================
+
+/*
+A class inherits from more than one class
+*/
+
+// First Parent
+class Engine
+{
+public:
+
+    void startEngine()
+    {
+        cout << "Engine Started" << endl;
+    }
+};
+
+// Second Parent
+class MusicSystem
+{
+public:
+
+    void playMusic()
+    {
+        cout << "Music Playing" << endl;
+    }
+};
+
+// Child Class
+class Car : public Engine, public MusicSystem
+{
+public:
+
+    void drive()
+    {
+        cout << "Car is Driving" << endl;
+    }
+};
