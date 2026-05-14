@@ -162,3 +162,47 @@ public:
         cout << personName << " is teaching" << endl;
     }
 };
+
+
+// =====================================================
+// 4) MULTILEVEL INHERITANCE
+// =====================================================
+
+/*
+Inheritance through multiple levels
+
+Grandparent -> Parent -> Child
+*/
+
+// Grandparent
+class LivingThing
+{
+public:
+
+    void breathe()
+    {
+        cout << "Living thing is breathing" << endl;
+    }
+};
+
+// Parent
+class Mammal : public LivingThing
+{
+public:
+
+    void walk()
+    {
+        cout << "Mammal is walking" << endl;
+    }
+};
+
+// Child
+class Human : public Mammal
+{
+public:
+
+    void speak()
+    {
+        cout << "Human is speaking" << endl;
+    }
+};
