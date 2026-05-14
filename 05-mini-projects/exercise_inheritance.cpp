@@ -104,3 +104,61 @@ public:
         cout << "Car is Driving" << endl;
     }
 };
+
+// =====================================================
+// 3) HIERARCHICAL INHERITANCE
+// =====================================================
+
+/*
+Multiple child classes inherit
+from the same parent class
+*/
+
+// Parent Class
+class Person
+{
+protected:
+    string personName;
+
+public:
+
+    Person(string n)
+    {
+        personName = n;
+    }
+
+    void introduce()
+    {
+        cout << "My name is " << personName << endl;
+    }
+};
+
+// First Child
+class Student : public Person
+{
+public:
+
+    Student(string n) : Person(n)
+    {
+    }
+
+    void study()
+    {
+        cout << personName << " is studying" << endl;
+    }
+};
+
+// Second Child
+class Teacher : public Person
+{
+public:
+
+    Teacher(string n) : Person(n)
+    {
+    }
+
+    void teach()
+    {
+        cout << personName << " is teaching" << endl;
+    }
+};
