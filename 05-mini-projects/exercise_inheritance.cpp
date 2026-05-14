@@ -206,3 +206,63 @@ public:
         cout << "Human is speaking" << endl;
     }
 };
+
+// =====================================================
+// MAIN FUNCTION
+// =====================================================
+
+int main()
+{
+    cout << "==============================" << endl;
+    cout << "Single Inheritance" << endl;
+    cout << "==============================" << endl;
+
+    Dog dog1("Rocky");
+
+    dog1.eat();
+    dog1.bark();
+
+
+    cout << endl;
+    cout << "==============================" << endl;
+    cout << "Multiple Inheritance" << endl;
+    cout << "==============================" << endl;
+
+    Car car1;
+
+    car1.startEngine();
+    car1.playMusic();
+    car1.drive();
+
+
+    cout << endl;
+    cout << "==============================" << endl;
+    cout << "Hierarchical Inheritance" << endl;
+    cout << "==============================" << endl;
+
+    Student s1("Hassan");
+    Teacher t1("Ahmed");
+
+    s1.introduce();
+    s1.study();
+
+    cout << endl;
+
+    t1.introduce();
+    t1.teach();
+
+
+    cout << endl;
+    cout << "==============================" << endl;
+    cout << "Multilevel Inheritance" << endl;
+    cout << "==============================" << endl;
+
+    Human h1;
+
+    h1.breathe();
+    h1.walk();
+    h1.speak();
+
+
+    return 0;
+}
