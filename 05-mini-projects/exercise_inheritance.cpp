@@ -1,57 +1,27 @@
 #include <iostream>
 using namespace std;
 
-// =====================================
-// Base Class
-// =====================================
-class Animal
-{
-public:
+/*
+=========================================================
+                    INHERITANCE IN C++
+=========================================================
 
-    // Virtual Function
-    virtual void makeSound()
-    {
-        cout << "Animal makes a sound" << endl;
-    }
-};
-// =====================================
-// Derived Class
-// =====================================
-class Dog : public Animal
-{
-public:
+Inheritance allows a class to inherit properties
+and functions from another class.
 
-    // Override Function
-    void makeSound() override
-    {
-        cout << "Dog says: Woof Woof" << endl;
-    }
-};
+Benefits:
+1) Code Reusability
+2) Better Organization
+3) Relationship Between Classes
 
-// =====================================
-// Another Derived Class
-// =====================================
-class Cat : public Animal
-{
-public:
+=========================================================
+Types of Inheritance:
+=========================================================
 
-    // Override Function
-    void makeSound() override
-    {
-        cout << "Cat says: Meow Meow" << endl;
-    }
-};
+1) Single Inheritance
+2) Multiple Inheritance
+3) Hierarchical Inheritance
+4) Multilevel Inheritance
 
-int main()
-{
-    Animal* animal1 = new Dog();
-    Animal* animal2 = new Cat();
-
-    animal1->makeSound();
-    animal2->makeSound();
-
-    delete animal1;
-    delete animal2;
-
-    return 0;
-}
+=========================================================
+*/
