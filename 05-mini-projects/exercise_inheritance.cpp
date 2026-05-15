@@ -16,11 +16,12 @@ Topics Included:
 
 =========================================================
 */
+
+
 // =====================================================
 // 1) SINGLE INHERITANCE
 // =====================================================
 
-// Parent Class
 class Animal
 {
 protected:
@@ -38,6 +39,21 @@ public:
         cout << name << " is eating" << endl;
     }
 };
+
+class Dog : public Animal
+{
+public:
+
+    Dog(string n) : Animal(n)
+    {
+    }
+
+    void bark()
+    {
+        cout << name << " is barking" << endl;
+    }
+};
+
 
 
 // =====================================================
@@ -73,16 +89,13 @@ public:
         cout << "Car is Driving" << endl;
     }
 };
+
+
+
 // =====================================================
 // 3) HIERARCHICAL INHERITANCE
 // =====================================================
 
-/*
-Multiple child classes inherit
-from the same parent class
-*/
-
-// Parent Class
 class Person
 {
 protected:
@@ -101,7 +114,6 @@ public:
     }
 };
 
-// First Child
 class Student : public Person
 {
 public:
@@ -116,7 +128,6 @@ public:
     }
 };
 
-// Second Child
 class Teacher : public Person
 {
 public:
@@ -132,17 +143,11 @@ public:
 };
 
 
+
 // =====================================================
 // 4) MULTILEVEL INHERITANCE
 // =====================================================
 
-/*
-Inheritance through multiple levels
-
-Grandparent -> Parent -> Child
-*/
-
-// Grandparent
 class LivingThing
 {
 public:
@@ -153,7 +158,6 @@ public:
     }
 };
 
-// Parent
 class Mammal : public LivingThing
 {
 public:
@@ -164,7 +168,6 @@ public:
     }
 };
 
-// Child
 class Human : public Mammal
 {
 public:
@@ -174,6 +177,77 @@ public:
         cout << "Human is speaking" << endl;
     }
 };
+
+
+
+// =====================================================
+// 5) FUNCTION OVERRIDING
+// =====================================================
+
+/*
+Function Overriding happens when
+a child class redefines a function
+from the parent class.
+*/
+
+class Employee
+{
+public:
+
+    virtual void work()
+    {
+        cout << "Employee is working" << endl;
+    }
+};
+
+class Programmer : public Employee
+{
+public:
+
+    void work() override
+    {
+        cout << "Programmer is writing code" << endl;
+    }
+};
+
+
+
+// =====================================================
+// 6) FRIEND FUNCTION
+// =====================================================
+
+/*
+A friend function can access
+private members of a class.
+*/
+
+class BankAccount
+{
+private:
+    string owner;
+    double balance;
+
+public:
+
+    BankAccount(string o, double b)
+    {
+        owner = o;
+        balance = b;
+    }
+
+    // Friend Function Declaration
+    friend void showAccount(BankAccount acc);
+};
+
+// Friend Function Definition
+void showAccount(BankAccount acc)
+{
+    cout << "Owner: " << acc.owner << endl;
+    cout << "Balance: " << acc.balance << endl;
+}
+
+
+
 
 // =====================================================
 // MAIN FUNCTION
@@ -230,6 +304,26 @@ int main()
     h1.breathe();
     h1.walk();
     h1.speak();
+
+
+    cout << endl;
+    cout << "==============================" << endl;
+    cout << "Function Overriding" << endl;
+    cout << "==============================" << endl;
+
+    Programmer p1;
+
+    p1.work();
+
+
+    cout << endl;
+    cout << "==============================" << endl;
+    cout << "Friend Function" << endl;
+    cout << "==============================" << endl;
+
+    BankAccount acc1("Hassan", 5000);
+
+    showAccount(acc1);
 
 
     return 0;
