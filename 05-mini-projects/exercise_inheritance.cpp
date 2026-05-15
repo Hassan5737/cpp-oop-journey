@@ -39,30 +39,11 @@ public:
     }
 };
 
-// Child Class
-class Dog : public Animal
-{
-public:
-
-    Dog(string n) : Animal(n)
-    {
-    }
-
-    void bark()
-    {
-        cout << name << " is barking" << endl;
-    }
-};
 
 // =====================================================
 // 2) MULTIPLE INHERITANCE
 // =====================================================
 
-/*
-A class inherits from more than one class
-*/
-
-// First Parent
 class Engine
 {
 public:
@@ -73,7 +54,6 @@ public:
     }
 };
 
-// Second Parent
 class MusicSystem
 {
 public:
@@ -84,7 +64,6 @@ public:
     }
 };
 
-// Child Class
 class Car : public Engine, public MusicSystem
 {
 public:
@@ -94,7 +73,6 @@ public:
         cout << "Car is Driving" << endl;
     }
 };
-
 // =====================================================
 // 3) HIERARCHICAL INHERITANCE
 // =====================================================
