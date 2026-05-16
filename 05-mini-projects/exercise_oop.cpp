@@ -166,6 +166,7 @@ int main()
 }
 
 
+
 /*
 ====================================================
                 Second OOP Exercise
@@ -199,7 +200,7 @@ Tasks:
 3. Deposit money into the account.
 4. Withdraw money from the account.
 5. Print account information.
-6. Prevent withdrawing more than the balance
+6. Prevent withdrawing more than the balance.
 
 ====================================================
 Expected OOP Concepts:
@@ -217,3 +218,87 @@ Solution:
 ====================================================
 */
 
+class BankAccount
+{
+private:
+    string ownerName;
+    int accountNumber;
+    double balance;
+
+public:
+
+    // Default Constructor
+    BankAccount()
+    {
+        ownerName = "Unknown";
+        accountNumber = 0;
+        balance = 0.0;
+    }
+
+    // Parameterized Constructor
+    BankAccount(string name, int number, double money)
+    {
+        ownerName = name;
+        accountNumber = number;
+        balance = money;
+    }
+
+    // Deposit Function
+    void deposit(double amount)
+    {
+        balance += amount;
+    }
+
+    // Withdraw Function
+    void withdraw(double amount)
+    {
+        if (amount <= balance)
+        {
+            balance -= amount;
+            cout << "Withdrawal Successful" << endl;
+        }
+        else
+        {
+            cout << "Insufficient Balance" << endl;
+        }
+    }
+
+    // Display Function
+    void displayAccountInfo()
+    {
+        cout << "Owner Name: " << ownerName << endl;
+        cout << "Account Number: " << accountNumber << endl;
+        cout << "Balance: " << balance << endl;
+    }
+
+    // Getter Functions
+    string getOwnerName()
+    {
+        return ownerName;
+    }
+
+    int getAccountNumber()
+    {
+        return accountNumber;
+    }
+
+    double getBalance()
+    {
+        return balance;
+    }
+};
+
+int main2()
+{
+    BankAccount acc1("Hasan", 12345, 5000);
+
+    acc1.deposit(2000);
+    acc1.withdraw(1500);
+    acc1.withdraw(10000);
+
+    cout << "--------------------------" << endl;
+
+    acc1.displayAccountInfo();
+
+    return 0;
+}
