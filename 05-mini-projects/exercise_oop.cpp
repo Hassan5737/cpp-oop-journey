@@ -164,3 +164,40 @@ int main()
 
     return 0;
 }
+
+
+/*
+====================================================
+                Second OOP Exercise
+====================================================
+
+Requirements:
+
+Create a class called BankAccount.
+
+The class should contain:
+
+Private:
+- ownerName
+- accountNumber
+- balance
+
+Public:
+- Default Constructor
+- Parameterized Constructor
+- deposit() function
+- withdraw() function
+- displayAccountInfo() function
+- Getter Functions
+
+====================================================
+Tasks:
+====================================================
+
+1. Create an account using the Default Constructor.
+2. Set values using the constructor or functions.
+3. Deposit money into the account.
+4. Withdraw money from the account.
+5. Print account information.
+6. Prevent withdrawing more than the balance.
+
