@@ -51,3 +51,116 @@ Expected OOP Concepts:
 
 ====================================================
 */
+
+class Student
+{
+private:
+    string name;
+    int id;
+    double gpa;
+
+public:
+
+    // Default Constructor
+    Student()
+    {
+        name = "Unknown";
+        id = 0;
+        gpa = 0.0;
+    }
+
+    // Parameterized Constructor
+    Student(string n, int i, double g)
+    {
+        name = n;
+        id = i;
+        gpa = g;
+    }
+
+    // Setter Functions
+    void setName(string n)
+    {
+        name = n;
+    }
+
+    void setId(int i)
+    {
+        id = i;
+    }
+
+    void setGpa(double g)
+    {
+        gpa = g;
+    }
+
+    // Getter Functions
+    string getName()
+    {
+        return name;
+    }
+
+    int getId()
+    {
+        return id;
+    }
+
+    double getGpa()
+    {
+        return gpa;
+    }
+
+    // Display Function
+    void displayInfo()
+    {
+        cout << "Name: " << name << endl;
+        cout << "ID: " << id << endl;
+        cout << "GPA: " << gpa << endl;
+    }
+
+    // Check if student is excellent
+    bool isExcellent()
+    {
+        return gpa >= 3.5;
+    }
+};
+
+int main()
+{
+    // Object using Default Constructor
+    Student s1;
+
+    s1.setName("Hasan");
+    s1.setId(101);
+    s1.setGpa(3.8);
+
+    cout << "First Student:" << endl;
+    s1.displayInfo();
+
+    if (s1.isExcellent())
+    {
+        cout << "Excellent Student" << endl;
+    }
+    else
+    {
+        cout << "Not Excellent" << endl;
+    }
+
+    cout << "--------------------------" << endl;
+
+    // Object using Parameterized Constructor
+    Student s2("Ali", 202, 2.9);
+
+    cout << "Second Student:" << endl;
+    s2.displayInfo();
+
+    if (s2.isExcellent())
+    {
+        cout << "Excellent Student" << endl;
+    }
+    else
+    {
+        cout << "Not Excellent" << endl;
+    }
+
+    return 0;
+}
