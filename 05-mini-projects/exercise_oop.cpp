@@ -199,5 +199,21 @@ Tasks:
 3. Deposit money into the account.
 4. Withdraw money from the account.
 5. Print account information.
-6. Prevent withdrawing more than the balance.
+6. Prevent withdrawing more than the balance
+
+====================================================
+Expected OOP Concepts:
+====================================================
+
+- Classes & Objects
+- Encapsulation
+- Constructors
+- Functions
+- Data Hiding
+- Validation
+
+====================================================
+Solution:
+====================================================
+*/
 
