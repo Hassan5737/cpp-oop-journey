@@ -55,7 +55,7 @@ class Car
         }
 
         void show ();
-        friend void add (Car ob);
+        friend void add (Car &ob);
 };
 
 void Car::show ()
@@ -63,7 +63,7 @@ void Car::show ()
     cout << "car price is: " << price;
 }
 
-void add (Car ob)
+void add (Car &ob)
 {
     cout << "The old car's price is: " << ob.price << endl;
     ob.price += 1000;
