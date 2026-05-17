@@ -39,3 +39,41 @@ Expected OOP Concepts:
 
 ====================================================
 */
+
+class Car
+{
+    private:
+        string name;
+        int model;
+        int price;
+    public:
+        Car(string n, int m, int p)
+        {
+            name = n;
+            model = m;
+            price = p;
+        }
+
+        void show ();
+        friend void add (Car ob);
+};
+
+void Car::show ()
+{
+    cout << "car price is: " << price;
+}
+
+void add (Car ob)
+{
+    cout << "The old car's price is: " << ob.price << endl;
+    ob.price += 1000;
+    cout << "The new car's price is: " << ob.price << endl;
+}
+
+int main ()
+{
+    Car ob1("BMW", 2017 , 100000);
+    ob1.show();
+    add(ob1);
+    return 0;
+}
