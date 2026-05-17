@@ -24,3 +24,18 @@ Requirements:
 
 5. Create a Friend Function that increases
    the car price by 1000.
+
+   ====================================================
+Expected OOP Concepts:
+====================================================
+
+- Classes & Objects
+- Constructors
+- Access Specifiers
+- Member Functions
+- Function Definition Outside Class
+- Friend Function
+- Encapsulation
+
+====================================================
+*/
