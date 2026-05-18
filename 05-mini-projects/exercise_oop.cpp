@@ -70,6 +70,47 @@ void add (Car &ob)
     cout << "The new car's price is: " << ob.price << endl;
 }
 
+/*
+====================================================
+              second  OOP Exercise
+====================================================
+
+Write a complete OOP program to represent 3 workers.
+
+Requirements:
+
+1. Create a class called Worker.
+
+2. The class should contain:
+   - workerName
+   - salary
+
+3. Use a Constructor to initialize
+   the worker name and salary.
+
+4. Create 3 objects for 3 different workers.
+
+5. Create a Friend Function to calculate
+   the average salary for all workers.
+
+6. Print:
+   - each worker information
+   - average salary
+
+====================================================
+Expected OOP Concepts:
+====================================================
+
+- Classes & Objects
+- Constructors
+- Friend Function
+- Encapsulation
+- Passing Objects to Functions
+- Accessing Private Members using Friend Function
+
+====================================================
+*/
+
 int main ()
 {
     Car ob1("BMW", 2017 , 100000);
@@ -77,3 +118,4 @@ int main ()
     add(ob1);
     return 0;
 }
+
