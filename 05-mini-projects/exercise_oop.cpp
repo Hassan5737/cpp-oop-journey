@@ -115,19 +115,21 @@ class Worker
 {
    private:
       string name;
-      int salary;
+      double salary;
    public:
-   Worker(string n, int s)
+   Worker(string n, double s)
    {
-      
+      name = n;
+      salary = s;
    }
 };
 
 int main ()
 {
-    Car ob1("BMW", 2017 , 100000);
-    ob1.show();
-    add(ob1);
+   
+   //  Car ob1("BMW", 2017 , 100000);
+   //  ob1.show();
+   //  add(ob1);
     return 0;
 }
 
