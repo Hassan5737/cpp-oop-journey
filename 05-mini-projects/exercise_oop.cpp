@@ -111,6 +111,18 @@ Expected OOP Concepts:
 ====================================================
 */
 
+class Worker
+{
+   private:
+      string name;
+      int salary;
+   public:
+   Worker(string n, int s)
+   {
+      
+   }
+};
+
 int main ()
 {
     Car ob1("BMW", 2017 , 100000);
