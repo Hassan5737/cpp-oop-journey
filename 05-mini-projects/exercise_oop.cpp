@@ -122,12 +122,20 @@ class Worker
       name = n;
       salary = s;
    }
-  friend void average (Worker ob1, Worker ob2, Worker ob3);
+  friend void average (Worker &ob1, Worker &ob2, Worker &ob3);
+
+  void show()
+{
+    cout << name << " : " << salary << endl;
+}
 
 };
 
-void average (Worker ob1, Worker ob2, Worker ob3)
+ void average (Worker &ob1, Worker &ob2, Worker &ob3);
 {
+   double avg =0;
+   avg = (ob1.salary + ob2.salary + ob3.salary ) /3;
+   cout << "The average is: " << avg << endl;
 }
 
 int main ()
@@ -140,6 +148,7 @@ int main ()
    Worker o1("Hassan" , 40000);
    Worker o2("Ahmed" , 30000);
    Worker o3("Assad" , 20000);
+   average(o1, o2, o3);
 
     return 0;
 }
