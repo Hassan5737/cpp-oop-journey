@@ -138,6 +138,65 @@ class Worker
    cout << "The average is: " << avg << endl;
 }
 
+
+/*
+====================================================
+                OOP Exercise
+====================================================
+
+Write a complete OOP program to represent:
+
+1. A Teacher class
+2. An Engineer class
+
+====================================================
+Requirements:
+====================================================
+
+Teacher Class:
+- Define two data members
+  Example:
+  - teacherName
+  - salary
+
+Engineer Class:
+- Define two data members
+  Example:
+  - engineerName
+  - salary
+
+====================================================
+Program Tasks:
+====================================================
+
+1. Use Constructors to initialize all data members.
+
+2. Create:
+   - a Teacher object named Ali
+   - an Engineer object named Ahmed
+
+3. Create a Friend Function that:
+   - accesses both salaries
+   - adds 1000 to each salary
+
+4. Print:
+   - old salaries
+   - new salaries after increasing
+
+====================================================
+Expected OOP Concepts:
+====================================================
+
+- Classes & Objects
+- Constructors
+- Multiple Classes
+- Friend Function
+- Accessing Private Members
+- Encapsulation
+
+====================================================
+*/
+
 int main ()
 {
 
