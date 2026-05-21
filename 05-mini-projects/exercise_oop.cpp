@@ -141,7 +141,7 @@ class Worker
 
 /*
 ====================================================
-              Third  OOP Exercise
+              Third OOP Exercise
 ====================================================
 
 Write a complete OOP program to represent:
@@ -196,6 +196,18 @@ Expected OOP Concepts:
 
 ====================================================
 */
+
+class Teacher
+{
+   private:
+
+};
+
+class Engineer
+{
+   private:
+      
+};
 
 int main ()
 {
