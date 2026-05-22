@@ -202,6 +202,12 @@ class Teacher
    private:
       string teacherName;
       int salary
+   public:
+      Teacher(string n, int s)
+      {
+         teacherName = n;
+         this->salary = s;
+      }
 
 };
 
