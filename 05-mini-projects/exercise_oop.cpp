@@ -205,7 +205,7 @@ class Teacher
    public:
       Teacher(string n, int s)
       {
-         teacherName = n;
+        this->teacherName = n;
          this->salary = s;
       }
 
@@ -216,6 +216,13 @@ class Engineer
    private:
       string engineerName;
       int salary;
+   public:
+      Engineer(string n, int s)
+      {
+         this->engineerName = n;
+         this->salary = s;
+
+      }
       
 };
 
