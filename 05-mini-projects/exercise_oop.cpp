@@ -200,12 +200,16 @@ Expected OOP Concepts:
 class Teacher
 {
    private:
+      string teacherName;
+      int salary
 
 };
 
 class Engineer
 {
    private:
+      string engineerName;
+      int salary;
       
 };
 
