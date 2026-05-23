@@ -233,10 +233,10 @@ int main ()
    //  ob1.show();
    //  add(ob1);
 
-   Worker o1("Hassan" , 40000);
-   Worker o2("Ahmed" , 30000);
-   Worker o3("Assad" , 20000);
-   average(o1, o2, o3);
+   // Worker o1("Hassan" , 40000);
+   // Worker o2("Ahmed" , 30000);
+   // Worker o3("Assad" , 20000);
+   // average(o1, o2, o3);
 
     return 0;
 }
