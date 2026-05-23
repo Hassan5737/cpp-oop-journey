@@ -238,6 +238,10 @@ int main ()
    // Worker o3("Assad" , 20000);
    // average(o1, o2, o3);
 
+   Teacher a1("Ali", 5000);
+   Engineer a2("Ahmed", 5000);
+
+
     return 0;
 }
 
