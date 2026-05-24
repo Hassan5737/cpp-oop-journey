@@ -226,6 +226,13 @@ class Engineer
       
 };
 
+void add(Teacher ob1,Engineer ob2)
+{
+   cout << "The old salary for teacher: " << ob1.salary << endl;
+   cout << "The old salary for Engineer: " << ob2.salary << endl;
+   cout << "the new salry for teacher: " << ob1.salary + 1000 << endl;
+   cout << "the new salry for Engineer: " << ob2.salary + 1000 << endl;
+
 int main ()
 {
 
