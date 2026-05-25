@@ -209,6 +209,8 @@ class Teacher
          this->salary = s;
       }
 
+      friend void add(Teacher ob1,Engineer ob2);
+
 };
 
 class Engineer
@@ -223,6 +225,7 @@ class Engineer
          this->salary = s;
 
       }
+      friend void add(Teacher ob1,Engineer ob2);
       
 };
 
