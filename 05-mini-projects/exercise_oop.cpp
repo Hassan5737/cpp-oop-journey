@@ -197,44 +197,76 @@ Expected OOP Concepts:
 ====================================================
 */
 
+class Engineer;
+
+// ==============================
+// Teacher Class
+// ==============================
 class Teacher
 {
-   private:
-      string teacherName;
-      int salary
-   public:
-      Teacher(string n, int s)
-      {
+private:
+    string teacherName;
+    int salary;
+
+public:
+
+    // Constructor
+    Teacher(string n, int s)
+    {
         this->teacherName = n;
-         this->salary = s;
-      }
+        this->salary = s;
+    }
 
-      friend void add(Teacher ob1,Engineer ob2);
-
+    // Friend Function
+    friend void add(Teacher &ob1, Engineer &ob2);
 };
 
+// ==============================
+// Engineer Class
+// ==============================
 class Engineer
 {
-   private:
-      string engineerName;
-      int salary;
-   public:
-      Engineer(string n, int s)
-      {
-         this->engineerName = n;
-         this->salary = s;
+private:
+    string engineerName;
+    int salary;
 
-      }
-      friend void add(Teacher ob1,Engineer ob2);
-      
+public:
+
+    // Constructor
+    Engineer(string n, int s)
+    {
+        this->engineerName = n;
+        this->salary = s;
+    }
+
+    // Friend Function
+    friend void add(Teacher &ob1, Engineer &ob2);
 };
 
-void add(Teacher ob1,Engineer ob2)
+// ==============================
+// Friend Function
+// ==============================
+void add(Teacher &ob1, Engineer &ob2)
 {
-   cout << "The old salary for teacher: " << ob1.salary << endl;
-   cout << "The old salary for Engineer: " << ob2.salary << endl;
-   cout << "the new salry for teacher: " << ob1.salary + 1000 << endl;
-   cout << "the new salry for Engineer: " << ob2.salary + 1000 << endl;
+    cout << "Old Teacher Salary: "
+         << ob1.salary << endl;
+
+    cout << "Old Engineer Salary: "
+         << ob2.salary << endl;
+
+    // Increase salaries
+    ob1.salary += 1000;
+    ob2.salary += 1000;
+
+    cout << "----------------------" << endl;
+
+    cout << "New Teacher Salary: "
+         << ob1.salary << endl;
+
+    cout << "New Engineer Salary: "
+         << ob2.salary << endl;
+}
+
 
 int main ()
 {
@@ -248,8 +280,9 @@ int main ()
    // Worker o3("Assad" , 20000);
    // average(o1, o2, o3);
 
-   Teacher a1("Ali", 5000);
-   Engineer a2("Ahmed", 5000);
+    Teacher t1("Ali", 5000);
+    Engineer e1("Ahmed", 7000);
+    add(t1, e1);
 
 
     return 0;
