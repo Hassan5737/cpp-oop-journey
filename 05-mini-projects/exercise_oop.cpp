@@ -268,6 +268,58 @@ void add(Teacher &ob1, Engineer &ob2)
 }
 
 
+/*
+====================================================
+             fourth OOP Exercise
+====================================================
+
+Write a complete program to represent
+a Rectangle class.
+
+====================================================
+Requirements:
+====================================================
+
+1. Create a class called Rectangle.
+
+2. Define two data members:
+   - length
+   - width
+
+3. Use Constructor Overloading:
+   - Default Constructor
+   - Parameterized Constructor
+
+4. Create a member function outside the class
+   to print rectangle information.
+
+5. Create 2 Rectangle objects.
+
+6. Create a Friend Function to:
+   - calculate area for each rectangle
+   - find the biggest rectangle area
+
+7. Print:
+   - rectangle dimensions
+   - each area
+   - biggest area
+
+====================================================
+Expected OOP Concepts:
+====================================================
+
+- Classes & Objects
+- Constructor Overloading
+- Member Functions
+- Function Definition Outside Class
+- Friend Function
+- Encapsulation
+- Passing Objects to Functions
+
+====================================================
+*/
+
+
 int main ()
 {
 
@@ -280,9 +332,9 @@ int main ()
    // Worker o3("Assad" , 20000);
    // average(o1, o2, o3);
 
-    Teacher t1("Ali", 5000);
-    Engineer e1("Ahmed", 7000);
-    add(t1, e1);
+   //  Teacher t1("Ali", 5000);
+   //  Engineer e1("Ahmed", 7000);
+   //  add(t1, e1);
 
 
     return 0;
