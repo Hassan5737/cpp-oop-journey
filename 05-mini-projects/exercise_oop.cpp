@@ -322,8 +322,23 @@ Expected OOP Concepts:
 class Rectangle
 {
    private:
-   int length;
-   int width;
+      int length;
+      int width;
+   public:
+      Rectangle()
+      {
+         cout << "Enter length: " << endl;
+         cin >> length;
+         cout << "Enter width: " << endl;
+         cin >> width;
+      }
+
+      Rectangle(int l, int w)
+      {
+         length = l;
+         width = w;
+      }
+   
 
 
 };
