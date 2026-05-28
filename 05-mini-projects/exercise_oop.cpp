@@ -319,6 +319,15 @@ Expected OOP Concepts:
 ====================================================
 */
 
+class Rectangle
+{
+   private:
+   int length;
+   int width;
+
+
+};
+
 
 int main ()
 {
