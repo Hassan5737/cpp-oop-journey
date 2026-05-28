@@ -338,10 +338,20 @@ class Rectangle
          length = l;
          width = w;
       }
+
+      void print();
    
 
 
 };
+
+      void Rectangle:: print()
+      {
+         cout << "length: " << length << endl;
+         cout << "width: " << width << endl;
+
+      }
+
 
 
 int main ()
