@@ -340,6 +340,7 @@ class Rectangle
       }
 
       void print();
+      friend void calc();
    
 
 
@@ -369,6 +370,10 @@ int main ()
    //  Teacher t1("Ali", 5000);
    //  Engineer e1("Ahmed", 7000);
    //  add(t1, e1);
+
+   Rectangle r1(10, 5);
+   Rectangle r2;
+   
 
 
     return 0;
