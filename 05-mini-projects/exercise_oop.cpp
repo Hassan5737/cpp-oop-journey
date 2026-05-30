@@ -402,9 +402,12 @@ int main ()
    //  Engineer e1("Ahmed", 7000);
    //  add(t1, e1);
 
-   Rectangle r1(10, 5);
-   Rectangle r2;
-   
+   Rectangle r1;
+
+    Rectangle r2(10, 20);
+
+    cout << "\nRectangle 1:\n";
+    r1.print();
 
 
     return 0;
