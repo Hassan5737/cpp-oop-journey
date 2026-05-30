@@ -321,37 +321,68 @@ Expected OOP Concepts:
 
 class Rectangle
 {
-   private:
-      int length;
-      int width;
-   public:
-      Rectangle()
-      {
-         cout << "Enter length: " << endl;
-         cin >> length;
-         cout << "Enter width: " << endl;
-         cin >> width;
-      }
+private:
+    int length;
+    int width;
 
-      Rectangle(int l, int w)
-      {
-         length = l;
-         width = w;
-      }
+public:
 
-      void print();
-      friend void calc();
-   
+    // Default Constructor
+    Rectangle()
+    {
+        cout << "Enter Length: ";
+        cin >> length;
 
+        cout << "Enter Width: ";
+        cin >> width;
+    }
 
+    // Parameterized Constructor
+    Rectangle(int l, int w)
+    {
+        length = l;
+        width = w;
+    }
+
+    void print();
+
+    friend void calc(Rectangle r1, Rectangle r2);
 };
 
-      void Rectangle:: print()
-      {
-         cout << "length: " << length << endl;
-         cout << "width: " << width << endl;
+// Function Definition Outside Class
+void Rectangle::print()
+{
+    cout << "Length = " << length << endl;
+    cout << "Width  = " << width << endl;
+}
 
-      }
+// Friend Function
+void calc(Rectangle r1, Rectangle r2)
+{
+    int area1 = r1.length * r1.width;
+    int area2 = r2.length * r2.width;
+
+    cout << "\nArea of Rectangle 1 = "
+         << area1 << endl;
+
+    cout << "Area of Rectangle 2 = "
+         << area2 << endl;
+
+    cout << "\nBiggest Area = ";
+
+    if (area1 > area2)
+    {
+        cout << area1 << endl;
+    }
+    else if (area2 > area1)
+    {
+        cout << area2 << endl;
+    }
+    else
+    {
+        cout << "Both Areas Are Equal" << endl;
+    }
+}
 
 
 
