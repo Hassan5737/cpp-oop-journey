@@ -384,6 +384,63 @@ void calc(Rectangle r1, Rectangle r2)
     }
 }
 
+/*
+====================================================
+                OOP Exercise
+====================================================
+
+Write a complete program to represent
+a Student class.
+
+====================================================
+Requirements:
+====================================================
+
+1. Create a class called Student.
+
+2. Define four data members:
+   - name
+   - age
+   - grade
+   - id
+
+3. Use a Parameterized Constructor
+   to initialize all data members.
+
+4. Create another class called University.
+
+5. Create a member function inside
+   the University class.
+
+6. Use the member function of the
+   University class to print all
+   Student information.
+
+7. Create:
+   - one Student object
+   - one University object
+
+8. Display:
+   - Student Name
+   - Student Age
+   - Student Grade
+   - Student ID
+
+====================================================
+Expected OOP Concepts:
+====================================================
+
+- Classes & Objects
+- Constructors
+- Multiple Classes
+- Member Functions
+- Friend Class
+- Encapsulation
+- Accessing Private Members
+
+====================================================
+*/
+
 
 
 int main ()
@@ -416,4 +473,3 @@ int main ()
 
     return 0;
 }
-
