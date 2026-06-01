@@ -522,6 +522,22 @@ Expected OOP Concepts:
 ====================================================
 */
 
+class Student
+{
+   private:
+      string name;
+      int id;
+      int grade;
+   public:
+      Student(string name, int id, int grade)
+      {
+         this->name = name;
+         this->id = id;
+         this->grade = grade;
+      }
+
+};
+
 
 
 int main ()
