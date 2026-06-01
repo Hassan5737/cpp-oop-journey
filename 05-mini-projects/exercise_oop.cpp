@@ -441,6 +441,25 @@ Expected OOP Concepts:
 ====================================================
 */
 
+class Stu
+{
+   private:
+      string name;
+      int age;
+      int grade;
+      int id;
+   public:
+      Stu(string n, int a, int g, int id)
+      {
+         this->name = n;
+         this->age = a;
+         this->grade = g;
+         this->id = id;
+      }
+};
+
+
+
 
 
 int main ()
