@@ -456,9 +456,21 @@ class Stu
          this->grade = g;
          this->id = id;
       }
+      friend class University;
 };
 
+class University : public Stu;
+{
+   public:
+      void print(Stu ob)
+      {
+         cout << "your name is: " << ob.name << endl;
+         cout << "your age is: " << ob.age << endl;
+         cout << "your grade is: " << ob.grade << endl;
+         cout << "your id is: " << ob.id << endl;
+      }
 
+};
 
 
 
@@ -490,5 +502,8 @@ int main ()
 
    //  calc(r1, r2);
 
+   Stu s (12,100,1234,"Hassan");
+   University u;
+   u.print(s);
     return 0;
 }
