@@ -386,7 +386,7 @@ void calc(Rectangle r1, Rectangle r2)
 
 /*
 ====================================================
-                OOP Exercise
+              fifth  OOP Exercise
 ====================================================
 
 Write a complete program to represent
@@ -459,17 +459,17 @@ int main ()
    //  Engineer e1("Ahmed", 7000);
    //  add(t1, e1);
 
-    Rectangle r1;
+   //  Rectangle r1;
 
-    Rectangle r2(10, 20);
+   //  Rectangle r2(10, 20);
 
-    cout << "\nRectangle 1:\n";
-    r1.print();
+   //  cout << "\nRectangle 1:\n";
+   //  r1.print();
 
-    cout << "\nRectangle 2:\n";
-    r2.print();
+   //  cout << "\nRectangle 2:\n";
+   //  r2.print();
 
-    calc(r1, r2);
+   //  calc(r1, r2);
 
     return 0;
 }
