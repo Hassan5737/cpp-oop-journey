@@ -473,6 +473,56 @@ class University : public Stu;
 };
 
 
+/*
+====================================================
+             sixth   OOP Exercise
+====================================================
+
+Write a complete program to represent
+20 Students.
+
+====================================================
+Requirements:
+====================================================
+
+1. Create a class called Student.
+
+2. Define data members for each student.
+   Example:
+   - name
+   - id
+   - grade
+
+3. Use a Parameterized Constructor
+   to initialize all data members.
+
+4. Create 20 Student objects.
+
+5. Create a Friend Function to:
+   - access student grades
+   - calculate the average grade
+     for all students
+
+6. Display:
+   - each student's information
+   - average grade of all students
+
+====================================================
+Expected OOP Concepts:
+====================================================
+
+- Classes & Objects
+- Constructors
+- Parameterized Constructor
+- Friend Function
+- Encapsulation
+- Passing Objects to Functions
+- Accessing Private Members
+
+====================================================
+*/
+
+
 
 int main ()
 {
@@ -502,8 +552,8 @@ int main ()
 
    //  calc(r1, r2);
 
-   Stu s (12,100,1234,"Hassan");
-   University u;
-   u.print(s);
-    return 0;
+   // Stu s (12,100,1234,"Hassan");
+   // University u;
+   // u.print(s);
+   //  return 0;
 }
