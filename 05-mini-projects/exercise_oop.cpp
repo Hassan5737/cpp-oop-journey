@@ -131,10 +131,11 @@ class Worker
 
 };
 
- void average (Worker &ob1, Worker &ob2, Worker &ob3);
+
+void average (Worker &ob1, Worker &ob2, Worker &ob3)
 {
-   double avg =0;
-   avg = (ob1.salary + ob2.salary + ob3.salary ) /3;
+   double avg = 0;
+   avg = (ob1.salary + ob2.salary + ob3.salary) / 3;
    cout << "The average is: " << avg << endl;
 }
 
@@ -449,25 +450,26 @@ class Stu
       int grade;
       int id;
    public:
-      Stu(string n, int a, int g, int id)
+      Stu(string n, int a, int g, int i)
       {
          this->name = n;
          this->age = a;
          this->grade = g;
-         this->id = id;
+         this->id = i;
       }
       friend class University;
 };
 
-class University : public Stu;
+
+class University
 {
    public:
       void print(Stu ob)
       {
-         cout << "your name is: " << ob.name << endl;
-         cout << "your age is: " << ob.age << endl;
+         cout << "your name is: "  << ob.name  << endl;
+         cout << "your age is: "   << ob.age   << endl;
          cout << "your grade is: " << ob.grade << endl;
-         cout << "your id is: " << ob.id << endl;
+         cout << "your id is: "    << ob.id    << endl;
       }
 
 };
@@ -489,8 +491,6 @@ Requirements:
 
 2. Define data members for each student.
    Example:
-   - name
-   - id
    - grade
 
 3. Use a Parameterized Constructor
@@ -522,21 +522,33 @@ Expected OOP Concepts:
 ====================================================
 */
 
+
+const int ARR_SIZE = 5;
 class Student
 {
    private:
-      string name;
-      int id;
       int grade;
    public:
-      Student(string name, int id, int grade)
+      Student()
       {
-         this->name = name;
-         this->id = id;
-         this->grade = grade;
+        
+         cout << "Enter your grade: ";
+         cin >> grade;
       }
 
+      friend void average(Student ob[], int n);
 };
+
+void average(Student ob[], int n)
+{
+   int sum = 0;
+   for(int i = 0; i < n; i++)
+   {
+    
+      sum += ob[i].grade;
+   }
+   cout << "The average of all Students: " << sum / n << endl;
+}
 
 
 
@@ -550,6 +562,7 @@ int main ()
    // Worker o1("Hassan" , 40000);
    // Worker o2("Ahmed" , 30000);
    // Worker o3("Assad" , 20000);
+   // o1.show(); o2.show(); o3.show();
    // average(o1, o2, o3);
 
    //  Teacher t1("Ali", 5000);
@@ -568,8 +581,14 @@ int main ()
 
    //  calc(r1, r2);
 
-   // Stu s (12,100,1234,"Hassan");
+   // FIX: Corrected argument order to match constructor (string, int, int, int)
+   // Stu s("Hassan", 12, 100, 1234);
    // University u;
    // u.print(s);
-   //  return 0;
+
+   Student st[ARR_SIZE];
+   average(st, ARR_SIZE);
+
+
+    return 0;
 }
