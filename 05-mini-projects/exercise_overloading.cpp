@@ -44,6 +44,21 @@ Expected OOP Concepts:
 
 ====================================================
 */
+
+class sum
+{
+    private:
+        int x = 0;
+    public:
+        void setval()
+        {
+            cout << "Enter x : " << endl;
+            cin >> x;
+        }
+        
+};
+
+
 int main()
 {
     return 0;
