@@ -128,6 +128,21 @@ Expected OOP Concepts:
 ====================================================
 */
 
+class Cal 
+{
+   private:
+      int x;
+      int y;
+   public:
+      Cal()
+      {
+         cout << "enter x: " << endl;
+         cin >> x;
+         cout << "enter y: " << endl;
+         cin >> y;
+      }
+};
+
 
 int main()
 {
