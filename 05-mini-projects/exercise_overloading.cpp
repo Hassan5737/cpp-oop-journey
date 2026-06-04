@@ -83,6 +83,51 @@ class sum
          }
 };
 
+/*
+====================================================
+                OOP Exercise
+====================================================
+
+Write a complete program to represent
+a class called Cal.
+
+====================================================
+Requirements:
+====================================================
+
+1. Create a class called Cal.
+
+2. Create two objects:
+   - ob1
+   - ob2
+
+3. Define two data members:
+   - x
+   - y
+
+4. Store x in object ob1.
+
+5. Store y in object ob2.
+
+6. Subtract the value of y
+   from the value of x.
+
+7. Display the result.
+
+====================================================
+Expected OOP Concepts:
+====================================================
+
+- Classes & Objects
+- Constructors
+- Multiple Objects
+- Data Members
+- Member Functions
+- Arithmetic Operations
+
+====================================================
+*/
+
 
 int main()
 {
