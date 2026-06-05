@@ -77,15 +77,15 @@ class sum
 // ====================================================
 //                     method 3:
 // ====================================================
-         void operator +(ob1)
+         void operator +(sum ob1)
          {
-            cout << x + bo1.x << endl;
+            cout << x + ob1.x << endl;
          }
 };
 
 /*
 ====================================================
-                OOP Exercise
+              second  OOP Exercise
 ====================================================
 
 Write a complete program to represent
@@ -152,7 +152,7 @@ class Cal
 
 /*
 ====================================================
-                OOP Exercise
+              third  OOP Exercise
 ====================================================
 
 Write a complete program to represent
@@ -201,7 +201,7 @@ Expected OOP Concepts:
 
 int main()
 {
-   Cal ob1;
-   Cal ob2;
+   // Cal ob1;
+   // Cal ob2;
     return 0;
 }
