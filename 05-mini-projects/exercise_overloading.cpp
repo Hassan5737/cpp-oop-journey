@@ -128,11 +128,13 @@ Expected OOP Concepts:
 ====================================================
 */
 
+
+
 class Cal 
 {
    private:
-      int x;
-      int y;
+      int x = 0;
+      int y = 0;
    public:
       Cal()
       {
@@ -141,13 +143,65 @@ class Cal
          cout << "enter y: " << endl;
          cin >> y;
       }
+
+      void operator - (Cal ob)
+      {
+         cout << x - ob.y << endl;
+      }
 };
+
+/*
+====================================================
+                OOP Exercise
+====================================================
+
+Write a complete program to represent
+a class called Multiply.
+
+====================================================
+Requirements:
+====================================================
+
+1. Create a class called Multiply.
+
+2. Create two objects:
+   - ob1
+   - ob2
+
+3. Define two data members:
+   - x
+   - y
+
+4. Store x in object ob1.
+
+5. Store y in object ob2.
+
+6. Multiply the value of x
+   by the value of y.
+
+7. Display the result.
+
+8. Implement the solution using
+   Operator Overloading.
+
+====================================================
+Expected OOP Concepts:
+====================================================
+
+- Classes & Objects
+- Constructors
+- Operator Overloading
+- Multiple Objects
+- Data Members
+- Arithmetic Operations
+
+====================================================
+*/
 
 
 int main()
 {
-   sum ob1;
-   sum ob2;
-
+   Cal ob1;
+   Cal ob2;
     return 0;
 }
