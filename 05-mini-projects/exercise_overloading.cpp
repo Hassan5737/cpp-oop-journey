@@ -150,53 +150,6 @@ class Cal
       }
 };
 
-/*
-====================================================
-              third  OOP Exercise
-====================================================
-
-Write a complete program to represent
-a class called Multiply.
-
-====================================================
-Requirements:
-====================================================
-
-1. Create a class called Multiply.
-
-2. Create two objects:
-   - ob1
-   - ob2
-
-3. Define two data members:
-   - x
-   - y
-
-4. Store x in object ob1.
-
-5. Store y in object ob2.
-
-6. Multiply the value of x
-   by the value of y.
-
-7. Display the result.
-
-8. Implement the solution using
-   Operator Overloading.
-
-====================================================
-Expected OOP Concepts:
-====================================================
-
-- Classes & Objects
-- Constructors
-- Operator Overloading
-- Multiple Objects
-- Data Members
-- Arithmetic Operations
-
-====================================================
-*/
 
 
 int main()
