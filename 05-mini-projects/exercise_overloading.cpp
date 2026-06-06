@@ -151,6 +151,42 @@ class Cal
 };
 
 
+/*
+====================================================
+            third OOP Exercise
+====================================================
+Write a complete program to represent
+a class called Count.
+====================================================
+Requirements:
+====================================================
+1. Create a class called Count.
+2. Create three objects:
+   - count1
+   - count2
+   - result
+3. Define one data member:
+   - value
+4. Store a value in count1.
+5. Store a value in count2.
+6. Add count1 and count2 together
+   and store the result in result.
+7. Display the result.
+8. Implement the solution using
+   Operator Overloading.
+====================================================
+Expected OOP Concepts:
+====================================================
+- Classes & Objects
+- Constructors
+- Operator Overloading
+- Multiple Objects
+- Data Members
+- Arithmetic Operations
+====================================================
+*/
+
+
 
 int main()
 {
