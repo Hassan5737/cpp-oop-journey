@@ -189,11 +189,19 @@ Expected OOP Concepts:
 class Count 
 {
    private:
-      value = 0;
+      int value = 0;
    public:
-      Count() : value (5)
+      Count() : value (5) {}
+      void print ()
       {
-         cout << "value is : " << value << endl;
+         cout << "value is: "  << value << endl;
+      }
+
+      Count operator +(Count ob)
+      {
+         Count result;
+         result.value = value + ob.value;
+         return result;
       }
 
 };
@@ -208,5 +216,7 @@ int main()
    Count count1;
    Count count2;
    Count result;
+
+   result = count1 + count2;
     return 0;
 }
