@@ -186,6 +186,17 @@ Expected OOP Concepts:
 ====================================================
 */
 
+class Count 
+{
+   private:
+      value = 0;
+   public:
+      Count() : value (5)
+      {
+         cout << "value is : " << value << endl;
+      }
+};
+
 
 
 int main()
