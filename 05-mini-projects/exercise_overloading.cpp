@@ -195,6 +195,7 @@ class Count
       {
          cout << "value is : " << value << endl;
       }
+
 };
 
 
@@ -203,5 +204,9 @@ int main()
 {
    // Cal ob1;
    // Cal ob2;
+
+   Count count1;
+   Count count2;
+   Count result;
     return 0;
 }
