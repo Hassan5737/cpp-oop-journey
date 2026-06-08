@@ -300,4 +300,12 @@ class Media
             cout << "Enter the year: " << endl;
             cin >> year;
         }
+        virtual void print ()
+        {
+            return 0;
+        }
+        virtual double getRating() const = 0;
+
+    ~ virtual Media();
+
 };
