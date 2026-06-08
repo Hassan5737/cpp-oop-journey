@@ -278,3 +278,26 @@ Bonus Challenges (Optional)
 
 ==========================================================
 */
+
+#include<iostream>
+using namespace std;
+
+class Media
+{
+    protected:
+        string title;
+        int year = 0;
+    public:
+        Media(string title, int year)
+        {
+            this->title = title;
+            this->year = year;
+        }
+        Media()
+        {
+            cout << "Enter the title: " << endl;
+            cin >> title;
+            cout << "Enter the year: " << endl;
+            cin >> year;
+        }
+};
