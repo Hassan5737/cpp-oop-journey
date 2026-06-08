@@ -284,28 +284,31 @@ using namespace std;
 
 class Media
 {
-    protected:
-        string title;
-        int year = 0;
-    public:
-        Media(string title, int year)
-        {
-            this->title = title;
-            this->year = year;
-        }
-        Media()
-        {
-            cout << "Enter the title: " << endl;
-            cin >> title;
-            cout << "Enter the year: " << endl;
-            cin >> year;
-        }
-        virtual void print ()
-        {
-            return 0;
-        }
-        virtual double getRating() const = 0;
+protected:
+    string title;
+    int year;
 
-    ~ virtual Media();
+public:
 
+    Media()
+    {
+        title = "Unknown";
+        year = 0;
+    }
+
+    Media(string t, int y)
+    {
+        title = t;
+        year = y;
+    }
+
+    virtual void print() const
+    {
+        cout << "Title: " << title << endl;
+        cout << "Year: " << year << endl;
+    }
+
+    virtual double getRating() const = 0;
+
+    virtual ~Media() {}
 };
