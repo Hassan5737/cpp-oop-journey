@@ -348,3 +348,35 @@ public:
         return rating;
     }
 };
+
+class Series : public Media
+{
+    private:
+        int seasons;
+        double rating;
+    public:
+        Series()
+            :Media()
+            {
+                seasons = 0;
+                rating = 0;
+            }
+        Series(string t, int y, int s, double r)
+            :Media(t,y)
+            {
+                seasons = s;
+                rating = r;
+            }
+        void print() const override
+        {
+            Media::print();
+
+            cout << "seasons: " << seasons << endl;
+            cout << "rating: " << rating << endl;
+        }
+
+        double getRating() const override
+        {
+            return rating;
+        }
+};
