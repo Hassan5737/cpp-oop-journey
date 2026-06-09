@@ -380,3 +380,20 @@ class Series : public Media
             return rating;
         }
 };
+
+class Review 
+{
+    private:
+        double* scores;
+        int size;
+    public:
+        Review()
+        {
+           *scores = nullptr;
+           size = 0; 
+        }
+        Review()
+        {
+            
+        }
+};
