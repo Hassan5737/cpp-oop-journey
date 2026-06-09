@@ -312,3 +312,39 @@ public:
 
     virtual ~Media() {}
 };
+
+class Movie : public Media
+{
+private:
+    string director;
+    double rating;
+
+public:
+
+    Movie()
+        : Media()
+    {
+        director = "Unknown";
+        rating = 0;
+    }
+
+    Movie(string t, int y, string d, double r)
+        : Media(t, y)
+    {
+        director = d;
+        rating = r;
+    }
+
+    void print() const override
+    {
+        Media::print();
+
+        cout << "Director: " << director << endl;
+        cout << "Rating: " << rating << endl;
+    }
+
+    double getRating() const override
+    {
+        return rating;
+    }
+};
