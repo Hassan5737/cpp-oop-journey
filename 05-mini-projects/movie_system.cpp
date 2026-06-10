@@ -381,19 +381,78 @@ class Series : public Media
         }
 };
 
-class Review 
+class Review
 {
-    private:
-        double* scores;
-        int size;
-    public:
-        Review()
+private:
+    double* scores;
+    int size;
+
+public:
+
+    // Default Constructor
+    Review()
+    {
+        scores = nullptr;
+        size = 0;
+    }
+
+    // Parameterized Constructor
+    Review(double arr[], int s)
+    {
+        size = s;
+
+        scores = new double[size];
+
+        for (int i = 0; i < size; i++)
         {
-           *scores = nullptr;
-           size = 0; 
+            scores[i] = arr[i];
         }
-        Review()
+    }
+
+    // Deep Copy Constructor
+    Review(const Review& other)
+    {
+        size = other.size;
+
+        scores = new double[size];
+
+        for (int i = 0; i < size; i++)
         {
-            
+            scores[i] = other.scores[i];
         }
+    }
+
+    double averageScore() const
+    {
+        if (size == 0)
+            return 0;
+
+        double sum = 0;
+
+        for (int i = 0; i < size; i++)
+        {
+            sum += scores[i];
+        }
+
+        return sum / size;
+    }
+
+    void print() const
+    {
+        cout << "Scores: ";
+
+        for (int i = 0; i < size; i++)
+        {
+            cout << scores[i] << " ";
+        }
+
+        cout << endl;
+        cout << "Average: " << averageScore() << endl;
+    }
+
+    // Destructor
+    ~Review()
+    {
+        delete[] scores;
+    }
 };
