@@ -467,6 +467,11 @@ public:
         return result;
     }
 
+    double& operator[](int index)
+    {
+       return scores[index];
+    }
+
     // Destructor
     ~Review()
     {
