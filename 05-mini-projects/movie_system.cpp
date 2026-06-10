@@ -472,6 +472,18 @@ public:
        return scores[index];
     }
 
+    bool operator==(const Review& ob) const
+    {
+        if(size != ob.size)
+             return false;
+        for(int i = 0; i < size; i++)
+        {
+            if(scores[i] != ob.scores[i])
+                return false;
+        }
+            return true;
+    }
+
     // Destructor
     ~Review()
     {
