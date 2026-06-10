@@ -450,9 +450,27 @@ public:
         cout << "Average: " << averageScore() << endl;
     }
 
+    Review operator+ (const Review& other)
+    {
+        Review result;
+        result.size = size + other.size;
+
+        result.scores = new double[result.size];
+        for(int i = 0; i < size; i++)
+        {
+          result.scores[i] = scores[i];
+        }
+        for(int i = 0; i < other.size; i++)
+        {
+          result.scores[i + size] = other.scores[i];
+        }
+        return result;
+    }
+
     // Destructor
     ~Review()
     {
         delete[] scores;
     }
 };
+
