@@ -616,3 +616,19 @@ const Review& compareReviews(const Review& r1, const Review& r2)
     return r2;
 }
 
+int main ()
+{
+    Movie movie("Inception", 2010, "Christopher Nolan", 9.0);
+    Series series("Dark", 2017, 3, 9.5);
+
+    Media* p;
+
+    cout << "Movie:\n";
+    p = &movie;
+    p->print();
+
+    cout << "\nSeries:\n";
+    p = &series;
+    p->print();
+}
+
