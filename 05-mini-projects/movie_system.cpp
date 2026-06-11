@@ -484,6 +484,8 @@ public:
             return true;
     }
 
+    friend const Review& compareReviews(const Review& r1, const Review& r2);
+
     // Destructor
     ~Review()
     {
