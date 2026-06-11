@@ -381,6 +381,8 @@ class Series : public Media
         }
 };
 
+
+class ReviewAnalyzer; 
 class Review
 {
 private:
@@ -486,12 +488,39 @@ public:
 
     friend const Review& compareReviews(const Review& r1, const Review& r2);
 
-    class ReviewAnalyzer;
+    friend class ReviewAnalyzer;
 
     // Destructor
     ~Review()
     {
         delete[] scores;
+    }
+};
+
+class ReviewAnalyzer
+{
+public:
+    void showHighestScore(const Review& r)
+    {
+        if (r.size == 0)
+        {
+            cout << "No scores available\n";
+            return;
+        }
+
+        double highest = r.scores[0];
+
+        for (int i = 1; i < r.size; i++)
+        {
+            if (r.scores[i] > highest)
+            {
+                highest = r.scores[i];
+            }
+        }
+
+        cout << "Highest Score: "
+             << highest
+             << endl;
     }
 };
 
