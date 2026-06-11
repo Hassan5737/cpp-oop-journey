@@ -486,6 +486,8 @@ public:
 
     friend const Review& compareReviews(const Review& r1, const Review& r2);
 
+    class ReviewAnalyzer;
+
     // Destructor
     ~Review()
     {
