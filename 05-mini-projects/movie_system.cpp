@@ -452,7 +452,28 @@ public:
         cout << "Average: " << averageScore() << endl;
     }
 
-    Review operator+ (const Review& other)
+    Review& operator=(const Review& other)
+{
+    if (this == &other)
+    {
+        return *this;
+    }
+
+    delete[] scores;
+
+    size = other.size;
+
+    scores = new double[size];
+
+    for (int i = 0; i < size; i++)
+    {
+        scores[i] = other.scores[i];
+    }
+
+    return *this;
+}
+
+    Review operator+ (const Review& other) const
     {
         Review result;
         result.size = size + other.size;
