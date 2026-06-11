@@ -545,6 +545,69 @@ public:
     }
 };
 
+class MovieLibrary
+{
+private:
+    Media** items;
+    int size;
+
+public:
+    // Default Constructor
+    MovieLibrary()
+    {
+        items = nullptr;
+        size = 0;
+    }
+
+    // Parameterized Constructor
+    MovieLibrary(Media* arr[], int s)
+    {
+        size = s;
+
+        items = new Media*[size];
+
+        for (int i = 0; i < size; i++)
+        {
+            items[i] = arr[i];
+        }
+    }
+
+    // print all media objects
+    void printAll() const
+    {
+        for (int i = 0; i < size; i++)
+        {
+            items[i]->print();
+            cout << "------------------" << endl;
+        }
+    }
+
+    // average rating of all media
+    double averageRating() const
+    {
+        if (size == 0)
+            return 0;
+
+        double sum = 0;
+
+        for (int i = 0; i < size; i++)
+        {
+            sum += items[i]->getRating();
+        }
+
+        return sum / size;
+    }
+
+    // Destructor
+    ~MovieLibrary()
+    {
+        delete[] items;
+    }
+};
+
+
+
+
 const Review& compareReviews(const Review& r1, const Review& r2)
 {
     if (r1.averageScore() >= r2.averageScore())
