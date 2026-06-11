@@ -493,3 +493,11 @@ public:
     }
 };
 
+const Review& compareReviews(const Review& r1, const Review& r2)
+{
+    if (r1.averageScore() >= r2.averageScore())
+        return r1;
+
+    return r2;
+}
+
