@@ -636,6 +636,26 @@ Media* operator[](int index) const
 }
 
 
+
+// =====================================
+// Operator ==
+// Compare two libraries
+// =====================================
+bool operator==(const MovieLibrary& other) const
+{
+    if (size != other.size)
+        return false;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (items[i] != other.items[i])
+            return false;
+    }
+
+    return true;
+}
+
+
     // Destructor
     ~MovieLibrary()
     {
