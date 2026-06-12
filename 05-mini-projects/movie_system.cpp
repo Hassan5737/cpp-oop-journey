@@ -598,6 +598,34 @@ public:
         return sum / size;
     }
 
+    // =====================================
+// Operator +
+// Merge two libraries
+// =====================================
+MovieLibrary operator+(const MovieLibrary& other) const
+{
+    MovieLibrary result;
+
+    result.size = size + other.size;
+
+    result.items = new Media*[result.size];
+
+    // copy first library
+    for (int i = 0; i < size; i++)
+    {
+        result.items[i] = items[i];
+    }
+
+    // copy second library
+    for (int i = 0; i < other.size; i++)
+    {
+        result.items[i + size] = other.items[i];
+    }
+
+    return result;
+}
+
+
     // Destructor
     ~MovieLibrary()
     {
