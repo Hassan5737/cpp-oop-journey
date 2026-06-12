@@ -626,6 +626,16 @@ MovieLibrary operator+(const MovieLibrary& other) const
 }
 
 
+// =====================================
+// Operator []
+// Access item by index
+// =====================================
+Media* operator[](int index) const
+{
+    return items[index];
+}
+
+
     // Destructor
     ~MovieLibrary()
     {
