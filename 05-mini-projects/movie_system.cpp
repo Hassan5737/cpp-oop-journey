@@ -288,18 +288,24 @@ protected:
     string title;
     int year;
 
+    static int mediaCount;
+
 public:
 
     Media()
     {
         title = "Unknown";
         year = 0;
+
+        mediaCount++;
     }
 
     Media(string t, int y)
     {
         title = t;
         year = y;
+
+        mediaCount++;
     }
 
     virtual void print() const
@@ -308,10 +314,19 @@ public:
         cout << "Year: " << year << endl;
     }
 
+    static void showCount()
+{
+    cout << "Total Media Objects: "
+         << mediaCount
+         << endl;
+}
+
     virtual double getRating() const = 0;
 
     virtual ~Media() {}
 };
+
+int Media::mediaCount = 0;
 
 class Movie : public Media
 {
