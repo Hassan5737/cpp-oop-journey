@@ -689,19 +689,201 @@ const Review& compareReviews(const Review& r1, const Review& r2)
     return r2;
 }
 
-int main ()
+int main()
 {
-    Movie movie("Inception", 2010, "Christopher Nolan", 9.0);
-    Series series("Dark", 2017, 3, 9.5);
+    cout << "============================\n";
+    cout << "Creating Movies and Series\n";
+    cout << "============================\n";
+
+    Movie m1("Inception", 2010, "Christopher Nolan", 9.0);
+    Movie m2("Interstellar", 2014, "Christopher Nolan", 9.5);
+
+    Series s1("Dark", 2017, 3, 9.4);
+    Series s2("Breaking Bad", 2008, 5, 9.8);
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing Reviews\n";
+    cout << "============================\n";
+
+    double arr1[] = {9, 10, 8};
+    double arr2[] = {7, 8, 9};
+
+    Review r1(arr1, 3);
+    Review r2(arr2, 3);
+
+    r1.print();
+    cout << endl;
+
+    r2.print();
+    cout << endl;
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing Deep Copy\n";
+    cout << "============================\n";
+
+    Review r3 = r1;
+
+    r3[0] = 100;
+
+    cout << "Original Review:\n";
+    r1.print();
+
+    cout << "\nCopied Review:\n";
+    r3.print();
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing Operator+\n";
+    cout << "============================\n";
+
+    Review merged = r1 + r2;
+
+    merged.print();
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing Operator[]\n";
+    cout << "============================\n";
+
+    cout << "First score in r1 = "
+         << r1[0]
+         << endl;
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing Operator==\n";
+    cout << "============================\n";
+
+    if (r1 == r2)
+        cout << "Reviews are equal\n";
+    else
+        cout << "Reviews are different\n";
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing Friend Function\n";
+    cout << "============================\n";
+
+    const Review& bestReview =
+        compareReviews(r1, r2);
+
+    bestReview.print();
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing Friend Class\n";
+    cout << "============================\n";
+
+    ReviewAnalyzer analyzer;
+
+    analyzer.showHighestScore(r1);
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing Polymorphism\n";
+    cout << "============================\n";
 
     Media* p;
 
-    cout << "Movie:\n";
-    p = &movie;
+    p = &m1;
     p->print();
 
-    cout << "\nSeries:\n";
-    p = &series;
+    cout << "----------------\n";
+
+    p = &s1;
     p->print();
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing MovieLibrary\n";
+    cout << "============================\n";
+
+    Media* library1Items[] =
+    {
+        &m1,
+        &s1
+    };
+
+    Media* library2Items[] =
+    {
+        &m2,
+        &s2
+    };
+
+    MovieLibrary lib1(library1Items, 2);
+    MovieLibrary lib2(library2Items, 2);
+
+
+
+    cout << "\nLibrary 1:\n";
+    lib1.printAll();
+
+    cout << "\nLibrary 2:\n";
+    lib2.printAll();
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing Library Operator+\n";
+    cout << "============================\n";
+
+    MovieLibrary lib3 = lib1 + lib2;
+
+    lib3.printAll();
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing Library Operator[]\n";
+    cout << "============================\n";
+
+    lib3[0]->print();
+
+
+
+    cout << "\n============================\n";
+    cout << "Testing Library Operator==\n";
+    cout << "============================\n";
+
+    if (lib1 == lib2)
+        cout << "Libraries are equal\n";
+    else
+        cout << "Libraries are different\n";
+
+
+
+    cout << "\n============================\n";
+    cout << "Average Rating\n";
+    cout << "============================\n";
+
+    cout << lib3.averageRating()
+         << endl;
+
+
+
+    cout << "\n============================\n";
+    cout << "Static Member Test\n";
+    cout << "============================\n";
+
+    Media::showCount();
+
+
+
+    cout << "\n============================\n";
+    cout << "Program Finished\n";
+    cout << "============================\n";
+
+    return 0;
 }
 
